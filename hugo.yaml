@@ -2,3 +2,32 @@ baseURL: https://mobuos.dev
 languageCode: pt-br
 title: Dini
 theme: PaperMod
+
+params:
+  # Header
+  label:
+    text: Dini
+    icon: /logo.png
+    iconHeight: 25
+
+  # Página Inicial
+  homeInfoParams:
+    title: eu ser joao site
+    Content: eu fazendo ainda (🍳🔪👨‍🍳)
+  
+  socialIcons:
+    - name: Email
+      url: mailto:dini@mobuos.dev
+    - name: Github
+      url: https://github.com/Mobuos
+    - name: Linkedin
+      url: https://www.linkedin.com/in/joao-dini/
+    # - name: Twitter
+    #   url: https://twitter.com/jdini_
+    # - name: Mastodon
+    #   url: https://mastodon.social/@mobuos
+
+  # Outros
+  ShowShareButtons: true
+  ShareButtons: ["linkedin", "twitter", "reddit", "ycombinator"]
+  ShowReadingTime: true
