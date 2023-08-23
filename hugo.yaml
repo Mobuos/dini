@@ -16,8 +16,8 @@ params:
     Content: eu fazendo ainda (🍳🔪👨‍🍳)
   
   socialIcons:
-    - name: Email
-      url: mailto:dini@mobuos.dev
+    # - name: Email
+    #   url: mailto:dini@mobuos.dev
     - name: Github
       url: https://github.com/Mobuos
     - name: Linkedin
