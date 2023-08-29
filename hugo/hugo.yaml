@@ -1,0 +1,39 @@
+baseURL: https://mobuos.dev/blog
+relativeURLs: true
+canonifyURLs: true
+publishDir: ../blog
+
+languageCode: pt-br
+title: Dini
+theme: PaperMod
+
+favicon: /static/favicon.ico
+
+params:
+  # Header
+  label:
+    text: Dini
+    icon: /logo.png
+    iconHeight: 25
+
+  # Página Inicial
+  homeInfoParams:
+    title: eu ser joao... blog?
+    Content: eu fazendo ainda (🍳🔪👨‍🍳)
+  
+  socialIcons:
+    # - name: Email
+    #   url: mailto:dini@mobuos.dev
+    - name: Github
+      url: https://github.com/Mobuos
+    - name: Linkedin
+      url: https://www.linkedin.com/in/joao-dini/
+    # - name: Twitter
+    #   url: https://twitter.com/jdini_
+    # - name: Mastodon
+    #   url: https://mastodon.social/@mobuos
+
+  # Outros
+  ShowShareButtons: true
+  ShareButtons: ["linkedin", "twitter", "reddit", "ycombinator"]
+  ShowReadingTime: true
