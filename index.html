@@ -1,10 +1,103 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-US">
   <head>
-    <title>oi</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="manifest" href="/hugo/static/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="hugo/static/favicon-32x32.png" />
+    <meta name="theme-color" content="#ffffff" /> <title>Dini</title>
+    <meta
+      name="description"
+      content="Site pessoal"
+    />
+
+    <link rel="icon" type="image/x-icon" href="/hugo/static/favicon.ico">
+
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/webfont-commitmono/stylesheet.css" />
+    
+    <!-- NÃO SEI OQ ISSO FAZ -->
+    <style>
+        .components-grid {
+          display: grid;
+          grid-column-gap: 1.4em;
+          grid-template-columns: auto;
+          grid-template-rows: auto;
+        }
+
+        .image-grid {
+          display: grid;
+          grid-template-rows: auto;
+          display: grid;
+          grid-gap: 1em;
+          grid-template-rows: auto;
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(calc(var(--page-width) / 12), 1fr)
+          );
+        }
+
+        @media only screen and (min-width: 70em) {
+          .components-grid {
+            grid-template-columns: 3fr 9fr;
+          }
+        }
+    </style>
   </head>
-  <body>
-    <p>volte mais tarde <a href="teste/">teste</a></p>
-    <p><a href="blog/">hugo mode</a></p>
+  <body class="terminal">
+    <!-- Header -->
+    <div class="container">
+      <br>
+      <div class="terminal-nav">
+        <header class="terminal-logo">
+          <div class="logo terminal-prompt"><a href="/" class="no-style">Dini</a></div>
+        </header>
+        <nav class="terminal-menu">
+          <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+            <li property="itemListElement" typeof="ListItem"><a href="/blog" property="item" typeof="WebPage" class="menu-item"><span property="name">Blog</span></a><meta property="position" content="1"></li>
+            <li property="itemListElement" typeof="ListItem"><a href="https://www.github.com/mobuos" property="item" typeof="WebPage" class="menu-item active"><span property="name">Github</span></a><meta property="position" content="2"></li>
+            <li property="itemListElement" typeof="ListItem"><a href="https://www.linkedin.com/in/joao-dini/" property="item" typeof="WebPage" class="menu-item active"><span property="name">Linkedin</span></a><meta property="position" content="3"></li>
+            <!-- <li style="height: 28px;"><a class="github-button" href="https://github.com/Gioni06/terminal.css" data-size="large" data-show-count="true" aria-label="Star Gioni06/terminal.css on GitHub">Star</a></li> -->
+          </ul>
+        </nav>
+      </div>
+      <br>
+    </div>
+
+    <div class="container">
+      <div id="introducao">
+        <div class="terminal-alert terminal-alert-error">!! Eu ainda estou 👨‍🍳 🔪 🍳 -> Saia daqui</div>
+        <h1>Links legais:</h1>
+        <ul>
+          <li><a href="https://github.com/Mobuos/construcao-compiladores-t6">Minelang: Gerador de Comandos do Minecraft 🌎</a></li>
+          <li><a href="https://github.com/Mobuos/Me-OW">Jogo de gato - Atirei o pau no gato 😺</a></li>
+          <li><a href="https://bit.ly/3BlS71b">INCRÍVEL VIDEO - ASSISTA AGORA</a></li
+        </ul>
+        <hr>
+        <br>
+        <div id="progresso" class="progress-bar progress-bar-show-percent">
+          <div class="progress-bar-filled" style="width: 7%" data-filled="Barra de progresso abstrata"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Botão Github -->
+    <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
+    
+    <!-- Highlight dos blocos de código -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll("pre code").forEach(block => {
+          window.hljs.highlightBlock(block);
+        });
+      });
+    </script>
+
   </body>
 </html>

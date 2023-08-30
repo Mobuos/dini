@@ -1,0 +1,8 @@
+.terminal-prompt::before {
+    content:"/. "
+  }
+
+#progresso {
+  margin-top: 17px;
+  height: 14px;
+}
