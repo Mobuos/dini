@@ -1,15 +1,14 @@
-var previousRandomIndex = -1;
+var previousRandomIndex = 0;
 
 function changeImage() {
     var image = document.getElementById("logo");
     var randomIndex;
     
     do {
-        randomIndex = Math.floor(Math.random() * 41) + 1;
+        randomIndex = Math.floor(Math.random() * 53) + 1;
     } while (randomIndex === previousRandomIndex);
-
+    
     previousRandomIndex = randomIndex;
-
-    var randomImageName = "/logochange/logos/" + randomIndex + ".png";
+    var randomImageName = "/logochange/logos/" + randomIndex + ".jpg";
     image.src = randomImageName;
 }
