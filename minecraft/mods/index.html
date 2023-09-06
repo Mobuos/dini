@@ -7,64 +7,32 @@
     <link rel="manifest" href="/hugo/static/site.webmanifest" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="hugo/static/favicon-32x32.png" />
-    <meta name="theme-color" content="#ffffff" /> <title>Dini</title>
+    <meta name="theme-color" content="#ffffff" /> <title>Mods do Server</title>
     <meta
       name="description"
-      content="Site pessoal"
+      content="Listagem dos mods utilizados em mc.mobuos.dev"
     />
 
     <link rel="icon" type="image/x-icon" href="/hugo/static/favicon.ico">
 
     <link rel="stylesheet" href="/css/normalize.css" />
-    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css" />
-    <link rel="stylesheet" href="/css/custom.css" />
-    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/mess.css">
     <link rel="stylesheet" href="/webfont-commitmono/stylesheet.css" />
     
-    <!-- NÃO SEI OQ ISSO FAZ -->
-    <style>
-        .components-grid {
-          display: grid;
-          grid-column-gap: 1.4em;
-          grid-template-columns: auto;
-          grid-template-rows: auto;
-        }
+    <!-- Ícones -->
+    <script src="https://unpkg.com/feather-icons"></script>
 
-        .image-grid {
-          display: grid;
-          grid-template-rows: auto;
-          display: grid;
-          grid-gap: 1em;
-          grid-template-rows: auto;
-          grid-template-columns: repeat(
-            auto-fit,
-            minmax(calc(var(--page-width) / 12), 1fr)
-          );
-        }
-
-        @media only screen and (min-width: 70em) {
-          .components-grid {
-            grid-template-columns: 3fr 9fr;
-          }
-        }
-    </style>
   </head>
-  <body class="terminal">
+  <body>
     <!-- Header -->
-    <div class="container">
-      <br>
-      <div class="terminal-nav">
-        <header class="terminal-logo">
-          <div class="logo terminal-prompt"><a href="/" class="no-style">Dini</a></div>
-        </header>
-        <nav class="terminal-menu">
-          <ul vocab="https://schema.org/" typeof="BreadcrumbList">
-            <li>Endereço do servidor: &nbsp <code>mc.mobuos.dev</code></li>
-          </ul>
-        </nav>
-      </div>
-      <br>
-    </div>
+    <header>
+      <h1>Jogo de Blocos</h1>
+      <nav>
+        Endereço do servidor: <code>mc.mobuos.dev</code>
+        / 
+        <a href="/minecraft">Instruções</a>
+      </nav>
+    </header>
 
     <!-- Texto Principal -->
     <div class="container">
@@ -94,15 +62,19 @@
                     <li><a href="https://modrinth.com/mod/trashslot">Trash Slot</a></li>
                     <li><a href="https://modrinth.com/mod/inventory-management">Inventory Management</a></li>
                     <!-- <li><a href="https://modrinth.com/mod/inventory-tabs-updated">Inventory Tabs</a></li> -->
-                    <li><a href="https://github.com/samolego/FabricTailor">[server] Fabric Tailor</a></li>
-                    <li><a href="https://modrinth.com/mod/double-doors">[server] Double Doors</a></li>
-                    <li><a href="https://modrinth.com/mod/universal-graves">[server] Universal Graves</a></li>
+                    <li><a href="https://github.com/samolego/FabricTailor">
+                      <i class="ftext" data-feather="server"></i>Fabric Tailor</a></li>
+                    <li><a href="https://modrinth.com/mod/double-doors">
+                      <i class="ftext" data-feather="server"></i>Double Doors</a></li>
+                    <li><a href="https://modrinth.com/mod/universal-graves">
+                      <i class="ftext" data-feather="server"></i>Universal Graves</a></li>
                   </ul>
                 </li>
                 <li>Dependências e Outros
                   <ul>
                   <li><a href="https://modrinth.com/mod/modmenu">Mod Menu</a></li>
-                  <li><a href="https://modrinth.com/mod/easyauth">[server] EasyAuth</a></li>
+                  <li><a href="https://modrinth.com/mod/easyauth">
+                    <i class="ftext" data-feather="server"></i>EasyAuth</a></li>
                   <li><a href="https://modrinth.com/mod/badpackets">Bad Packets</a></li>
                   <li><a href="https://modrinth.com/mod/balm">Balm Library</a></li>
                   <li><a href="https://modrinth.com/mod/fabric-api">Fabric API</a></li>
@@ -117,9 +89,9 @@
         </div>
     </div>
     
-    <!-- Botão Github -->
-    <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
-    
+    <!-- Ícones -->
+    <script>feather.replace({width: '1em', height: '1em'});</script>
+
     <!-- Highlight dos blocos de código -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
     <script>

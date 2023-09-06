@@ -16,77 +16,47 @@
     <link rel="icon" type="image/x-icon" href="/hugo/static/favicon.ico">
 
     <link rel="stylesheet" href="/css/normalize.css" />
-    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css" />
-    <link rel="stylesheet" href="/css/custom.css" />
-    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/mess.css">
     <link rel="stylesheet" href="/webfont-commitmono/stylesheet.css" />
-    
-    <!-- NÃO SEI OQ ISSO FAZ -->
-    <style>
-        .components-grid {
-          display: grid;
-          grid-column-gap: 1.4em;
-          grid-template-columns: auto;
-          grid-template-rows: auto;
-        }
 
-        .image-grid {
-          display: grid;
-          grid-template-rows: auto;
-          display: grid;
-          grid-gap: 1em;
-          grid-template-rows: auto;
-          grid-template-columns: repeat(
-            auto-fit,
-            minmax(calc(var(--page-width) / 12), 1fr)
-          );
-        }
+    <!-- Script para alterar logo -->
+    <script src="logochange/changeImage.js"></script> 
 
-        @media only screen and (min-width: 70em) {
-          .components-grid {
-            grid-template-columns: 3fr 9fr;
-          }
-        }
-    </style>
+    <!-- Ícones -->
+    <script src="https://unpkg.com/feather-icons"></script>
   </head>
-  <body class="terminal">
-    <!-- Header -->
-    <div class="container">
-      <br>
-      <div class="terminal-nav">
-        <header class="terminal-logo">
-          <div class="logo terminal-prompt"><a href="/" class="no-style">Dini</a></div>
-        </header>
-        <nav class="terminal-menu">
-          <ul vocab="https://schema.org/" typeof="BreadcrumbList">
-            <li property="itemListElement" typeof="ListItem"><a href="/blog" property="item" typeof="WebPage" class="menu-item"><span property="name">"Blog"</span></a><meta property="position" content="1"></li>
-            <li property="itemListElement" typeof="ListItem"><a href="https://www.github.com/mobuos" property="item" typeof="WebPage" class="menu-item"><span property="name">Github</span></a><meta property="position" content="2"></li>
-            <li property="itemListElement" typeof="ListItem"><a href="https://www.linkedin.com/in/joao-dini/" property="item" typeof="WebPage" class="menu-item"><span property="name">Linkedin</span></a><meta property="position" content="3"></li>
-            <!-- <li style="height: 28px;"><a class="github-button" href="https://github.com/Gioni06/terminal.css" data-size="large" data-show-count="true" aria-label="Star Gioni06/terminal.css on GitHub">Star</a></li> -->
-          </ul>
+  <body>
+    <header style="display: flex; align-items: center;">
+      <img id="logo"
+        onclick="changeImage()"
+        role="button"
+        style="float: left"
+        src="https://avatars.githubusercontent.com/u/12601762?v=4" alt="Logo do DINI">
+      <div>
+        <h1 style="margin-top: 0; padding-top: 0;">Dini</h1>
+        <nav style="margin-bottom: 0;">
+          <a href="/blog">Blog</a>
+            / 
+          <a href="https://www.github.com/mobuos">Github</a>
+            / 
+          <a href="https://www.linkedin.com/in/joao-dini/">Linkedin</a>
         </nav>
       </div>
-      <br>
-    </div>
+    </header>
 
-    <div class="container">
+    <div>
       <div id="introducao">
-        <div class="terminal-alert terminal-alert-error">!! Eu ainda estou 👨‍🍳 🔪 🍳 -> Saia daqui</div>
+        <blockquote><i class="ftext" style="margin-bottom: 0.15em;"data-feather="alert-octagon"></i> Eu ainda estou 👨‍🍳 🔪 🍳 -> Saia daqui</blockquote>
         <h1>Links legais:</h1>
         <ul>
           <li><a href="/minecraft/">Minecraft - mc.mobuos.dev</a></li>
           <li><a href="https://bit.ly/3BlS71b">INCRÍVEL VIDEO - ASSISTA AGORA</a></li
         </ul>
-        <hr>
-        <br>
-        <div id="progresso" class="progress-bar progress-bar-show-percent">
-          <div class="progress-bar-filled" style="width: 7%" data-filled="Barra de progresso abstrata"></div>
-        </div>
       </div>
     </div>
-    
-    <!-- Botão Github -->
-    <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
+
+    <!-- Ícones -->
+    <script>feather.replace({width: '1em', height: '1em'});</script>
     
     <!-- Highlight dos blocos de código -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
@@ -97,6 +67,5 @@
         });
       });
     </script>
-
   </body>
 </html>

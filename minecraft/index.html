@@ -7,87 +7,38 @@
     <link rel="manifest" href="/hugo/static/site.webmanifest" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="hugo/static/favicon-32x32.png" />
-    <meta name="theme-color" content="#ffffff" /> <title>Dini</title>
+    <meta name="theme-color" content="#ffffff" /> <title>Servidor de Mine</title>
     <meta
       name="description"
-      content="Site pessoal"
+      content="Instruções para entrar no servidor"
     />
 
     <link rel="icon" type="image/x-icon" href="/hugo/static/favicon.ico">
 
     <link rel="stylesheet" href="/css/normalize.css" />
-    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css" />
-    <link rel="stylesheet" href="/css/custom.css" />
-    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/mess.css">
     <link rel="stylesheet" href="/webfont-commitmono/stylesheet.css" />
     
-    <!-- NÃO SEI OQ ISSO FAZ -->
-    <style>
-        .components-grid {
-          display: grid;
-          grid-column-gap: 1.4em;
-          grid-template-columns: auto;
-          grid-template-rows: auto;
-        }
-
-        .image-grid {
-          display: grid;
-          grid-template-rows: auto;
-          display: grid;
-          grid-gap: 1em;
-          grid-template-rows: auto;
-          grid-template-columns: repeat(
-            auto-fit,
-            minmax(calc(var(--page-width) / 12), 1fr)
-          );
-        }
-
-        @media only screen and (min-width: 70em) {
-          .components-grid {
-            grid-template-columns: 3fr 9fr;
-          }
-        }
-    </style>
+    <!-- Ícones -->
+    <script src="https://unpkg.com/feather-icons"></script>
   </head>
-  <body class="terminal">
-    <!-- Header -->
-    <div class="container">
-      <br>
-      <div class="terminal-nav">
-        <header class="terminal-logo">
-          <div class="logo terminal-prompt"><a href="/" class="no-style">Dini</a></div>
-        </header>
-        <nav class="terminal-menu">
-          <ul vocab="https://schema.org/" typeof="BreadcrumbList">
-            <li>Endereço do servidor: &nbsp <code>mc.mobuos.dev</code></li>
-          </ul>
-        </nav>
-      </div>
-      <br>
+  <body>
+    <header>
+      <h1>Jogo de Blocos</h1>
+      <nav>
+        Endereço do servidor: <code>mc.mobuos.dev</code>
+        / 
+        <a href="/">Dini</a>
+      </nav>
+    </header>
+    <div>
+        <p>Baixe o <a href="https://fabricmc.net/use/installer/">Fabric Loader</a> e adicione os mods <a href="https://drive.google.com/file/d/1szxhW7VBoVBTsX6hngExf5nR60IPmRgI/view?usp=sharing">(<i class="ftext" data-feather="hard-drive"></i>Link do Drive)</a> na pasta de <code>.minecraft/mods</code></p>
+        <p>Para minecraft 🏴‍☠️🦜, você vai precisar fazer <code>/login</code> ou <code>/l</code> toda vez que entrar no jogo com a senha que o DINI te der</p>
+        <hr>
+        <p>Veja a <a href="/minecraft/mods/"><i class="ftext" data-feather="settings"></i>Lista de Mods</a></p>
     </div>
 
-    <!-- Texto Principal -->
-    <div class="container">
-        <div id="QuickStart">
-            <p>Baixe o <a href="https://fabricmc.net/use/installer/">Fabric Loader</a> e adicione os mods <a href="https://drive.google.com/file/d/1szxhW7VBoVBTsX6hngExf5nR60IPmRgI/view?usp=sharing">(Link do Drive)</a> na pasta de <code>.minecraft/mods</code></p>
-            <p>Para minecraft 🏴‍☠️🦜, você vai precisar fazer <code>/login</code> ou <code>/l</code> toda vez que entrar no jogo com a senha que o DINI te der</p>
-            <p>Veja a <a href="/minecraft/mods/">Lista de Mods</a>
-            </p>
-        </div>
-    </div>
-    
-    <!-- Botão Github -->
-    <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
-    
-    <!-- Highlight dos blocos de código -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        document.querySelectorAll("pre code").forEach(block => {
-          window.hljs.highlightBlock(block);
-        });
-      });
-    </script>
-
+    <!-- Ícones -->
+    <script>feather.replace({width: '1em', height: '1em'});</script>
   </body>
 </html>
