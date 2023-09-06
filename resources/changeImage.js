@@ -9,6 +9,6 @@ function changeImage() {
     } while (randomIndex === previousRandomIndex);
     
     previousRandomIndex = randomIndex;
-    var randomImageName = "/logochange/logos/" + randomIndex + ".jpg";
+    var randomImageName = "/resources/logos/" + randomIndex + ".jpg";
     image.src = randomImageName;
 }

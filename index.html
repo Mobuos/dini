@@ -20,10 +20,8 @@
     <link rel="stylesheet" href="/webfont-commitmono/stylesheet.css" />
 
     <!-- Script para alterar logo -->
-    <script src="logochange/changeImage.js"></script> 
+    <script src="resources/changeImage.js"></script> 
 
-    <!-- Ícones -->
-    <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body>
     <header style="display: flex; align-items: center;">
@@ -32,7 +30,7 @@
         role="button"
         style="float: left;
         filter: drop-shadow(0 0 0.25rem rgb(0, 0, 0))"
-        src="logochange/logos/0.jpg" alt="Logo do DINI">
+        src="resources/logos/0.jpg" alt="Logo do DINI">
       <div>
         <h1 style="margin-top: 0; padding-top: 0;">Dini</h1>
         <nav style="margin-bottom: 0;">
@@ -47,7 +45,11 @@
 
     <div>
       <div id="introducao">
-        <blockquote><i class="ftext" style="margin-bottom: 0.15em;"data-feather="alert-octagon"></i> Eu ainda estou 👨‍🍳 🔪 🍳 -> Saia daqui</blockquote>
+        <blockquote>
+          <svg class="icon">
+            <use href="/resources/icons/feather-sprite.svg#alert-octagon" />
+          </svg>Eu ainda estou 👨‍🍳 🔪 🍳 -> Saia daqui</blockquote>
+        
         <h1>Links legais:</h1>
         <ul>
           <li><a href="/minecraft/">Minecraft - mc.mobuos.dev</a></li>
@@ -55,9 +57,6 @@
         </ul>
       </div>
     </div>
-
-    <!-- Ícones -->
-    <script>feather.replace({width: '1em', height: '1em'});</script>
     
     <!-- Highlight dos blocos de código -->
     <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>

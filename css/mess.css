@@ -464,10 +464,17 @@ img {
 }
 
 /* Feather Icons */
-.ftext{
+.icon{
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill: none;
+	width: 1em;
+	height: 1em;
 	vertical-align: middle;
 	margin-bottom: 0.25em;
-	margin-right: 0.5em
+	margin-right: 0.5em;
 }
 
 #logo{
