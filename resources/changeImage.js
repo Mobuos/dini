@@ -5,7 +5,7 @@ function changeImage() {
     var randomIndex;
     
     do {
-        randomIndex = Math.floor(Math.random() * 53) + 1;
+        randomIndex = Math.floor(Math.random() * 52) + 1;
     } while (randomIndex === previousRandomIndex);
     
     previousRandomIndex = randomIndex;
