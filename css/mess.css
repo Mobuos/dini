@@ -1,526 +1,190 @@
-/* Completa abominação de new.css, simple.css e terminal.css */
-:root {
-	/* --nc-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
-	--nc-font-sans: Poppins, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-	/* --nc-font-mono: Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono', 'Courier New', Courier, monospace; */
-    --nc-font-mono: Martian Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-	--nc-tx-1: #000000;
-	--nc-tx-2: #1A1A1A;
-	--nc-bg-1: #FFFFFF;
-	--nc-bg-2: #F6F8FA;
-	--nc-bg-3: #E5E7EB;
-	--nc-lk-1: #1a95e0;
-	--nc-lk-2: #0366D6;
-	--nc-lk-tx: #FFFFFF;
-	--nc-ac-1: #79FFE1;
-    --nc-ac-tx: #0C4047;
-    --global-font-size: 15px;
-	--global-line-height: 1.4em;
-	--global-space: 10px;
-	--font-stack: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-	--mono-font-stack: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-	--background-color: #fff;
-	--page-width: 60em;
-	--font-color: #151515;
-	--invert-font-color: #fff;
-	--primary-color: #1a95e0;
-	--secondary-color: #727578;
-	--error-color: #d20962;
-	--progress-bar-background: #727578;
-	--progress-bar-fill: #151515;
-	--code-bg-color: #e8eff2;
-	--input-style: solid;
-	--display-h1-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--nc-tx-1: #ffffff;
-		--nc-tx-2: #eeeeee;
-		--nc-bg-1: #090909;
-		--nc-bg-2: #0e0e0f;
-		--nc-bg-3: #252527;
-		--nc-lk-1: #3291FF;
-		--nc-lk-2: #0070F3;
-		--nc-lk-tx: #FFFFFF;
-		--nc-ac-1: #7928CA;
-		--nc-ac-tx: #FFFFFF;
-	}
-}
-
+/* Mostly neat.css */
 * {
-	/* Reset margins and padding */
-	margin: 0;
-	padding: 0;
+    box-sizing: border-box;
 }
 
-address,
-area,
-article,
-aside,
-audio,
-blockquote,
-datalist,
-details,
-dl,
-fieldset,
-figure,
-form,
-input,
-iframe,
-img,
-meter,
-nav,
-ol,
-optgroup,
-option,
-output,
-p,
-pre,
-progress,
-ruby,
-section,
-table,
-textarea,
-ul,
-video {
-	/* Margins for most elements */
-	margin-bottom: 1rem;
-}
-
-html,input,select,button {
-	/* Set body font family and some finicky elements */
-	font-family: var(--nc-font-sans);
-}
-
-body {
-	/* Center body in page */
-	margin: 0 auto;
-	max-width: 900px;
-	padding: 2rem;
-	border-radius: 6px;
-	overflow-x: hidden;
-	word-break: break-word;
-	overflow-wrap: break-word;
-	background: var(--nc-bg-1);
-
-	/* Main body text */
-	color: var(--nc-tx-2);
-	font-size: 1.03rem;
-	line-height: 1.5;
-}
-
-::selection {
-	/* Set background color for selected text */
-	background: var(--nc-ac-1);
-	color: var(--nc-ac-tx);
-}
-
-h1,h2,h3,h4,h5,h6 {
-	line-height: 1;
-	color: var(--nc-tx-1);
-	padding-top: .875rem;
-}
-
-h1,
-h2,
-h3 {
-	color: var(--nc-tx-1);
-	padding-bottom: 2px;
-	margin-bottom: 8px;
-	border-bottom: 1px solid var(--nc-bg-2);
-}
-
-h4,
-h5,
-h6 {
-	margin-bottom: .3rem;
+:root {
+    color-scheme: light dark;
+    --light: #fff;
+    --lesslight: #efefef;
+    --dark: #404040;
+    --moredark: #000;
+    --link: royalblue;
+    /* border-top: 5px solid var(--dark); */
+    line-height: 1.5em;
+    font-family: system-ui, sans-serif;
+    font-size: 16px;
+    color: var(--dark);
 }
 
 h1 {
-	font-size: 2.25rem;
+    line-height: 1em;
 }
 
-h2 {
-	font-size: 1.85rem;
+button, input, textarea {
+    font-size: 1em; /* Override browser default font shrinking*/
 }
 
-h3 {
-	font-size: 1.55rem;
+input {
+    border: 1px solid var(--dark);
+    background-color: var(--lesslight);
+    border-radius: .25em;
+    padding: .5em;
 }
 
-h4 {
-	font-size: 1.25rem;
+pre {
+    background-color: var(--lesslight);
+    margin: 0.5em 0 0.5em 0;
+    padding: 0.5em;
+    overflow: auto;
 }
 
-h5 {
-	font-size: 1rem;
-}
-
-h6 {
-	font-size: .875rem;
-}
-
-/* a {
-	color: var(--nc-lk-1);
-}
-
-a:hover {
-	color: var(--nc-lk-2);
-} */
-
-a {
-    cursor: pointer;
-    color: var(--primary-color);
-    text-decoration: none;
-  }
-  
-a:hover {
-    background-color: var(--primary-color);
-    color: var(--font-color);
-}
-
-abbr:hover {
-	/* Set the '?' cursor while hovering an abbreviation */
-	cursor: help;
+code {
+    background-color: var(--lesslight);
 }
 
 blockquote {
-	padding: 1.5rem;
-	background: var(--nc-bg-2);
-	border-left: 5px solid var(--nc-bg-3);
+    border-left: 0.25rem solid var(--dark);
+    padding-left: 1rem;
 }
 
-abbr {
-	cursor: help;
+body {
+    background-color: var(--light);
+    margin: 0;
+    max-width: 800px;
+    padding: 0 20px 20px 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-blockquote *:last-child {
-	padding-bottom: 0;
-	margin-bottom: 0;
+a {
+    outline: none;
+    color: var(--dark);
 }
 
-header {
-	background: var(--nc-bg-2);
-	border-bottom: 1px solid var(--nc-bg-3);
-	padding: 2rem 1.5rem;
-	
-	/* This sets the right and left margins to cancel out the body's margins. It's width is still the same, but the background stretches across the page's width. */
-
-	margin: -2rem calc(0px - (50vw - 50%)) 2rem;
-
-	/* Shorthand for:
-
-	margin-top: -2rem;
-	margin-bottom: 2rem;
-
-	margin-left: calc(0px - (50vw - 50%));
-	margin-right: calc(0px - (50vw - 50%)); */
-	
-	padding-left: calc(50vw - 50%);
-	padding-right: calc(50vw - 50%);
-}
-
-header h1,
-header h2,
-header h3 {
-	padding-bottom: 0;
-	border-bottom: 0;
-}
-
-header > *:first-child {
-	margin-top: 0;
-	padding-top: 0;
-}
-
-header > *:last-child {
-	margin-bottom: 0;
-}
-
-a button,
-button,
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
-	font-size: 1rem;
-	display: inline-block;
-	padding: 6px 12px;
-	text-align: center;
-	text-decoration: none;
-	white-space: nowrap;
-	background: var(--nc-lk-1);
-	color: var(--nc-lk-tx);
-	border: 0;
-	border-radius: 4px;
-	box-sizing: border-box;
-	cursor: pointer;
-	color: var(--nc-lk-tx);
-}
-
-a button[disabled],
-button[disabled],
-input[type="submit"][disabled],
-input[type="reset"][disabled],
-input[type="button"][disabled] {
-	cursor: default;
-	opacity: .5;
-
-	/* Set the [X] cursor while hovering a disabled link */
-	cursor: not-allowed;
-}
-
-.button:focus,
-.button:hover,
-button:focus,
-button:hover,
-input[type="submit"]:focus,
-input[type="submit"]:hover,
-input[type="reset"]:focus,
-input[type="reset"]:hover,
-input[type="button"]:focus,
-input[type="button"]:hover {
-	background: var(--nc-lk-2);
-}
-
-code,
-pre,
-kbd,
-samp {
-	/* Set the font family for monospaced elements */
-	font-family: var(--nc-font-mono);
-}
-
-code,
-samp,
-kbd,
-pre {
-	/* The main preformatted style. This is changed slightly across different cases. */
-	background: var(--nc-bg-2);
-	border: 1px solid var(--nc-bg-3);
-	border-radius: 4px;
-	padding: 3px 6px;
-	font-size: 0.9rem;
-}
-
-kbd {
-	/* Makes the kbd element look like a keyboard key */
-	border-bottom: 3px solid var(--nc-bg-3);
-}
-
-pre {
-	padding: 1rem 1.4rem;
-	max-width: 100%;
-	overflow: auto;
-}
-
-pre code {
-	/* When <code> is in a <pre>, reset it's formatting to blend in */
-	background: inherit;
-	font-size: inherit;
-	color: inherit;
-	border: 0;
-	padding: 0;
-	margin: 0;
-}
-
-code pre {
-	/* When <pre> is in a <code>, reset it's formatting to blend in */
-	display: inline;
-	background: inherit;
-	font-size: inherit;
-	color: inherit;
-	border: 0;
-	padding: 0;
-	margin: 0;
-}
-
-details {
-	/* Make the <details> look more "clickable" */
-	padding: .6rem 1rem;
-	background: var(--nc-bg-2);
-	border: 1px solid var(--nc-bg-3);
-	border-radius: 4px;
-}
-
-summary {
-	/* Makes the <summary> look more like a "clickable" link with the pointer cursor */
-	cursor: pointer;
-	font-weight: bold;
-}
-
-details[open] {
-	/* Adjust the <details> padding while open */
-	padding-bottom: .75rem;
-}
-
-details[open] summary {
-	/* Adjust the <details> padding while open */
-	margin-bottom: 6px;
-}
-
-details[open]>*:last-child {
-	/* Resets the bottom margin of the last element in the <details> while <details> is opened. This prevents double margins/paddings. */
-	margin-bottom: 0;
-}
-
-dt {
-	font-weight: bold;
-}
-
-dd::before {
-	/* Add an arrow to data table definitions */
-	content: '→ ';
-}
-
-hr {
-	/* Reset the border of the <hr> separator, then set a better line */
-	border: 0;
-	border-bottom: 1px solid var(--nc-bg-3);
-	margin: 1rem auto;
-}
-
-fieldset {
-	margin-top: 1rem;
-	padding: 2rem;
-	border: 1px solid var(--nc-bg-3);
-	border-radius: 4px;
-}
-
-legend {
-	padding: auto .5rem;
-}
-
-table {
-	/* border-collapse sets the table's elements to share borders, rather than floating as separate "boxes". */
-	border-collapse: collapse;
-	width: 100%
-}
-
-td,
-th {
-	border: 1px solid var(--nc-bg-3);
-	text-align: left;
-	padding: .5rem;
-}
-
-th {
-	background: var(--nc-bg-2);
-}
-
-tr:nth-child(even) {
-	/* Set every other cell slightly darker. Improves readability. */
-	background: var(--nc-bg-2);
-}
-
-table caption {
-	font-weight: bold;
-	margin-bottom: .5rem;
-}
-
-textarea {
-	/* Don't let the <textarea> extend off the screen naturally or when dragged by the user */
-	max-width: 100%;
-}
-
-ol,
-ul {
-	/* Replace the browser default padding */
-	padding-left: 2rem;
-}
-
-li {
-	margin-top: .4rem;
-}
-
-ul ul,
-ol ul,
-ul ol,
-ol ol {
-	margin-bottom: 0;
-}
-
-mark {
-	padding: 3px 6px;
-	background: var(--nc-ac-1);
-	color: var(--nc-ac-tx);
-}
-
-textarea,
-select,
-input {
-	padding: 6px 12px;
-	margin-bottom: .5rem;
-	background: var(--nc-bg-2);
-	color: var(--nc-tx-2);
-	border: 1px solid var(--nc-bg-3);
-	border-radius: 4px;
-	box-shadow: none;
-	box-sizing: border-box;
+a:hover {
+    text-decoration-color: var(--link);
 }
 
 img {
-	border-radius: 8px;
-	max-width: 100%;
+    max-width: 100%;
+    height: auto;
 }
 
-.subtitle {
-	color: rgb(143, 143, 143);
+button, .button, input[type=submit] {
+    display: inline-block;
+    background-color: var(--dark);
+    color: var(--light);
+    text-align: center;
+    padding: .5em;
+    border-radius: .25em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
 }
 
-/* Feather Icons */
-.icon{
-	stroke: currentColor;
-	stroke-width: 2;
-	stroke-linecap: round;
-	stroke-linejoin: round;
-	fill: none;
-	width: 1em;
-	height: 1em;
-	vertical-align: middle;
-	margin-bottom: 0.2em !important;
-	margin-right: 0.5em;
+.button a {
+    text-decoration: none;
+}
+
+button:hover, .button:hover, input[type=submit]:hover {
+    color: var(--lesslight);
+    background-color: var(--moredark);
+}
+
+/* Add a margin between side-by-side buttons */
+button + button, .button + .button, input[type=submit] + input[type=submit] {
+    margin-left: 1em;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.breathe {
+    margin-top: 3em;
+}
+
+input.center {
+    display: block;
+    margin-top: 1em;
+}
+
+.bordered {
+    border: 3px solid;
+}
+
+.home {
+    display: inline-block;
+    background-color: var(--dark);
+    color: var(--light);
+    margin-top: 20px;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/* Desktop sizes */
+@media (min-width: 600px) {
+    ol.twocol {
+        column-count: 2;
+    }
+    
+    .row {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        width: 100%;
+    }
+
+    /* Make everything in a row a column */
+    .row > * {
+        display: block;
+        flex: 1 1 auto;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .row > *:not(:last-child) {
+        margin-right: 10px;
+    }
+}
+
+/* Dark mode overrides (confusingly inverse) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --light: #222;
+        --lesslight: #333;
+        --dark: #eee;
+        --moredark: #fefefe;
+    }
+    /* This fixes an odd blue then white shadow on FF in dark mode */
+    *:focus {
+        outline: var(--light);
+        box-shadow: 0 0 0 .25em var(--link);
+    }
+    .button a {
+        color: var(--light);
+    }
+}
+
+/* Printing */
+@media print {
+    .home {
+        display: none;
+    }
 }
 
 #logo{
-	width: 5em;
-	height: 5em;
-	margin-right: 2em;
-	margin-bottom: 0em;
+    width: 5em;
+    height: 5em;
+    margin-right: 1em;
 }
 
 #logo:hover {
     cursor: pointer;
 }
-
-.glow {
-	color: #fff;
-	text-align: center;
-	-webkit-animation: glow 1s ease-in-out infinite alternate;
-	-moz-animation: glow 1s ease-in-out infinite alternate;
-	animation: glow 1s ease-in-out infinite alternate;
-  }
-
-  @-webkit-keyframes glow {
-	from {
-	  text-shadow: 0 0 10px #0366D6, 0 0 20px #0366D6, 0 0 30px #b4e600, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-	}
-	to {
-	  text-shadow: 0 0 20px #0366D6, 0 0 30px #d63b89, 0 0 40px #d8ff4d, 0 0 50px #4da0ff, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-	}
-  }
-  
-  @keyframes glow {
-	from {
-	  text-shadow: 0 0 10px #0366D6, 0 0 20px #0366D6, 0 0 30px #b4e600, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-	}
-	to {
-	  text-shadow: 0 0 20px #0366D6, 0 0 30px #d63b89, 0 0 40px #d8ff4d, 0 0 50px #4da0ff, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-	}
-  }
-
-  .center-cropped {
-	width: 100%;
-	max-height: 20em;
-	object-fit: cover;
-	object-position: 50% 62%;
-  }

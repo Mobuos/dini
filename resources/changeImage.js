@@ -6,6 +6,7 @@ function changeImage() {
 
 	do {
 		randomIndex = Math.floor(Math.random() * 38) + 1;
+		console.log(randomIndex);
 	} while (randomIndex === previousRandomIndex);
 
 	previousRandomIndex = randomIndex;
