@@ -7,14 +7,17 @@
     color-scheme: light dark;
     --light: #fff;
     --lesslight: #efefef;
-    --dark: #404040;
-    --moredark: #000;
+    --dark: rgba(33, 40, 50, 1);
+    --moredark: rgba(22, 24, 25, 1);
     --link: royalblue;
     /* border-top: 5px solid var(--dark); */
     line-height: 1.5em;
     font-family: system-ui, sans-serif;
     font-size: 16px;
     color: var(--dark);
+    background: #212832;
+    height: 100%;
+    background: linear-gradient(150deg,rgba(33, 40, 50, 1) 0%, rgba(22, 24, 25, 1) 100%);background-color: #212832;
 }
 
 h1 {
@@ -49,7 +52,11 @@ blockquote {
 }
 
 body {
-    background-color: var(--light);
+    margin: 0;
+}
+
+main {
+    /* background-color: var(--light); */
     margin: 0;
     max-width: 800px;
     padding: 0 20px 20px 20px;
@@ -57,12 +64,41 @@ body {
     margin-right: auto;
 }
 
+header {
+    padding: 20px 60px 20px 60px;
+    display: flex;
+    align-items: center;
+    background-color: #E56D50;
+}
+
 a {
     outline: none;
     color: var(--dark);
+    position: relative;
+    text-decoration: none;
+}
+
+a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 4px;
+    background-color: var(--dark);
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+}
+
+a:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
 }
 
 a:hover {
+    text-decoration: dashed;
     text-decoration-color: var(--link);
 }
 
@@ -95,6 +131,14 @@ button:hover, .button:hover, input[type=submit]:hover {
 /* Add a margin between side-by-side buttons */
 button + button, .button + .button, input[type=submit] + input[type=submit] {
     margin-left: 1em;
+}
+
+.hg-900 {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-size: x-large;
+    font-weight: 900;
+    font-style: normal;
 }
 
 .center {
