@@ -27,7 +27,7 @@
                     <button class="wl-chip" data-type="exclusive" data-tag="⚙️">
                         ⚙️ Tech
                     </button>
-                    <button class="wl-chip" data-type="exclusive" data-tag="🎲">
+                    <button class="wl-chip" data-type="exclusive" data-tag="🎲,🕹️">
                         🎲 Jogos
                     </button>
                 </div>
@@ -186,6 +186,7 @@
                 });
             }
 
+            // "x, y" -> [x, y]
             function parseTags(tagAttr) {
                 if (!tagAttr) return [];
                 return tagAttr.split(/[\s,]+/).filter(t => t.trim().length > 0);
@@ -204,7 +205,7 @@
                         if (!customFilters[state.exclusiveTag](item)) return false;
                     } else {
                         const reqTags = parseTags(state.exclusiveTag);
-                        if (!reqTags.every(t => itemTags.includes(t))) return false;
+                        if (!reqTags.some(t => itemTags.includes(t))) return false; // or
                     }
                 }
 

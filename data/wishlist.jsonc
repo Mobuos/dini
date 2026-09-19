@@ -96,6 +96,14 @@
     "observation": "Pierce Brown"
   },
   {
+    "title": "Steam",
+    "tags": ["🕹️"],
+    "price": 1,
+    "link": "https://store.steampowered.com/wishlist/id/mobuos/?sort=discount",
+    "coverImage": "../resources/wl-images/steam.jpg",
+    "observation": "Jogos digitais pela Steam"
+  },
+  {
     "title": "Bohnanza",
     "tags": ["🎲"],
     "price": 2,
@@ -317,7 +325,7 @@
   },
   {
     "title": "Steam Frame",
-    "tags": ["🌟"],
+    "tags": ["🌟", "⚙️"],
     "price": 3,
     "link": "https://store.steampowered.com/hardware/steamframe",
     "coverImage": "../resources/wl-images/steamframe.jpg",
@@ -325,7 +333,7 @@
   },
   {
     "title": "Melomania P100 SE",
-    "tags": ["🌟"],
+    "tags": ["🌟", "⚙️"],
     "price": 3,
     "link": "https://www.cambridgeaudio.com/row/en/products/headphones/melomania/melomania-p100-se",
     "coverImage": "../resources/wl-images/melomania.jpg",
@@ -341,7 +349,7 @@
   },
   {
     "title": "Playdate",
-    "tags": ["🌟"],
+    "tags": ["🌟", "⚙️"],
     "price": 3,
     "link": "https://play.date/",
     "coverImage": "../resources/wl-images/playdate.png",
