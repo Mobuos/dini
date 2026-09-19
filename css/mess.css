@@ -4,19 +4,38 @@
 
 :root {
     color-scheme: light dark;
+    --accent: #E56D50;
+    --black: #191919;
+    --white: #FFFEEA;
     --light: #fff;
     --lesslight: #efefef;
     --dark: rgba(33, 40, 50, 1);
     --moredark: rgba(22, 24, 25, 1);
     --link: royalblue;
-    /* border-top: 5px solid var(--dark); */
+    
+    /* Wishlist CSS Variables */
+    --wl-accent: #a75743;
+    --wl-black: #191919;
+    --wl-white: #FFFEEA;
+    --wl-white-faded: rgba(255, 254, 234, 0.75);
+    --wl-bg-card: rgba(30, 36, 45, 0.95);
+    --wl-chip-bg: rgba(255, 254, 234, 0.06);
+    --wl-chip-hover: rgba(255, 254, 234, 0.12);
+    --wl-shadow-border: 0 0 0 1px rgba(255, 254, 234, 0.1), 0 2px 6px rgba(0, 0, 0, 0.3);
+    --wl-shadow-border-hover: 0 0 0 1px #E56D50, 0 4px 12px rgba(0, 0, 0, 0.4);
+    --wl-divider: rgba(255, 254, 234, 0.15);
+    --wl-radius-card: 8px;
+    --wl-radius-chip: 6px;
+    --wl-price-active: #35c425;
+    --wl-price-inactive: rgba(255, 254, 234, 0.096);
+
     line-height: 1.5em;
     font-family: system-ui, sans-serif;
     font-size: 16px;
     color: var(--dark);
-    background: #212832;
-    height: 100%;
-    background: linear-gradient(150deg,rgba(33, 40, 50, 1) 0%, rgba(22, 24, 25, 1) 100%);background-color: #212832;
+    min-height: 100vh;
+    background: linear-gradient(150deg, rgba(33, 40, 50, 1) 0%, var(--black) 100%);
+    background-attachment: fixed;
 }
 
 h1 {
@@ -230,4 +249,438 @@ input.center {
 
 #logo:hover {
     cursor: pointer;
+}
+
+/* ==========================================================================
+   Wishlist Page (/wl)
+   ========================================================================== */
+
+.wl-main {
+    max-width: 960px;
+    margin-inline: auto;
+    padding-inline: 20px;
+    padding-block: 36px 48px;
+    color: var(--wl-white);
+    min-height: 100vh;
+}
+
+/* Filter Chips Bar */
+.wl-filters-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-block-end: 28px;
+    flex-wrap: wrap;
+}
+
+.wl-filters-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.wl-filter-divider {
+    width: 1px;
+    height: 22px;
+    background-color: var(--wl-divider);
+    flex-shrink: 0;
+    margin-inline: 6px;
+}
+
+.wl-filter-obs {
+    margin-block: -12px 24px;
+    padding-inline: 14px;
+    padding-block: 10px;
+    background-color: rgba(255, 254, 234, 0.05);
+    border-inline-start: 3px solid var(--wl-accent);
+    border-radius: 4px;
+    font-size: 0.88em;
+    font-style: italic;
+    color: var(--wl-white);
+    line-height: 1.45;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.wl-chip,
+button.wl-chip,
+button + button.wl-chip {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding-inline: 16px;
+    padding-block: 6px;
+    border-radius: 9999px;
+    background-color: var(--wl-chip-bg);
+    color: var(--wl-white);
+    font-size: 0.9em;
+    font-weight: 500;
+    border: 1.5px solid rgba(255, 254, 234, 0.2);
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    box-shadow: none;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.wl-chip-circle,
+button.wl-chip-circle {
+    margin-inline-start: auto;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.wl-chip-circle svg {
+    width: 15px;
+    height: 15px;
+    display: block;
+}
+
+.wl-chip:hover,
+button.wl-chip:hover {
+    background-color: rgba(255, 254, 234, 0.15);
+    color: var(--wl-white);
+    border-color: rgba(255, 254, 234, 0.35);
+}
+
+.wl-chip:focus,
+.wl-chip:focus-visible,
+button.wl-chip:focus,
+button.wl-chip:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+.wl-chip.active,
+button.wl-chip.active,
+button.wl-chip.active:hover {
+    background-color: var(--wl-accent);
+    color: var(--wl-white);
+    border-color: var(--wl-accent);
+    box-shadow: none;
+}
+
+/* Grid Layout */
+.wl-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* Card Component */
+.wl-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--wl-bg-card);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1.5px solid rgba(255, 254, 234, 0.18);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    color: var(--wl-white);
+}
+
+.wl-card-bleed {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(40px) opacity(0.28) saturate(5) brightness(0.75);
+    transform: scale(1.3);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.wl-card-cover-wrapper,
+.wl-card-body,
+.wl-card-footer {
+    position: relative;
+    z-index: 1;
+}
+
+.wl-card-cover-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    position: relative;
+}
+
+.wl-card-cover-wrapper::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 45%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(30, 36, 45, 0.7) 100%);
+    pointer-events: none;
+}
+
+.wl-card-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    outline: 1px solid rgba(255, 255, 255, 0.1);
+    outline-offset: -1px;
+    transition: opacity 0.15s ease;
+}
+
+.wl-card-cover-wrapper:hover .wl-card-cover {
+    opacity: 0.9;
+}
+
+.wl-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.wl-card-category {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: var(--wl-white);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    line-height: 1.2;
+}
+
+.wl-card-title {
+    margin: 0;
+    font-size: 1.05em;
+    font-weight: 600;
+    color: var(--wl-white);
+    line-height: 1.3;
+}
+
+.wl-card-observation {
+    font-size: 0.88em;
+    color: var(--wl-white-faded);
+    line-height: 1.45;
+    word-break: break-word;
+}
+
+.wl-card-observation.clamped {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.wl-mostrar-mais,
+button.wl-mostrar-mais,
+button.wl-mostrar-mais:hover,
+button.wl-mostrar-mais:focus,
+button.wl-mostrar-mais:focus-visible,
+button.wl-mostrar-mais:active {
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    color: var(--wl-accent);
+    border: none;
+    padding: 0;
+    font-size: 0.85em;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: start;
+    margin-block-start: 2px;
+}
+
+.wl-mostrar-mais:hover {
+    text-decoration: underline;
+}
+
+/* Card Footer */
+.wl-card-footer {
+    padding-inline: 16px;
+    padding-block: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block-start: auto;
+    background-color: rgba(255, 254, 234, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.wl-card-footer.has-link {
+    cursor: pointer;
+    user-select: none;
+}
+
+.wl-card-footer.has-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(125, 61, 45, 0.1) 35%, rgba(168, 64, 38, 0.4) 100%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.wl-card-footer.has-link:hover::before {
+    opacity: 1;
+}
+
+.wl-card-footer-left,
+.wl-link-btn {
+    position: relative;
+    z-index: 2;
+}
+
+.wl-card-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wl-card-extra-tags {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.95em;
+}
+
+.wl-card-footer-divider {
+    width: 1px;
+    height: 14px;
+    background-color: var(--wl-divider);
+}
+
+.wl-price-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    font-weight: 700;
+    font-size: 0.9em;
+}
+
+.wl-dollar {
+    display: inline-block;
+    width: 0.65em;
+    text-align: center;
+}
+
+.wl-dollar.active {
+    color: var(--wl-price-active);
+}
+
+.wl-dollar.inactive {
+    color: var(--wl-price-inactive);
+}
+
+.wl-link-btn,
+a.wl-link-btn,
+a.wl-link-btn:hover,
+a.wl-link-btn:focus,
+a.wl-link-btn:focus-visible {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wl-white);
+    font-size: 1.15em;
+    font-weight: 600;
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    line-height: 1;
+}
+
+.wl-empty-msg {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding-block: 48px;
+    color: rgba(255, 254, 234, 0.5);
+    font-size: 1em;
+}
+
+/* Lightbox Modal */
+.wl-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    padding: 20px;
+}
+
+.wl-modal.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.wl-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+}
+
+.wl-modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.wl-modal-content img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 1.5px solid rgba(255, 254, 234, 0.2);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+.wl-modal-close,
+button.wl-modal-close,
+button.wl-modal-close:hover,
+button.wl-modal-close:focus,
+button.wl-modal-close:focus-visible {
+    position: absolute;
+    top: -32px;
+    right: 0;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: transparent;
+    color: rgba(255, 254, 234, 0.4);
+    border: none;
+    font-size: 1.6em;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    line-height: 1;
+    outline: none;
+    box-shadow: none;
+    transition: color 0.15s ease;
+    padding: 0;
+}
+
+.wl-modal-close:hover,
+button.wl-modal-close:hover {
+    color: rgba(255, 254, 234, 0.9);
+    background: transparent;
 }

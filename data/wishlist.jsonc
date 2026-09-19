@@ -1,0 +1,350 @@
+[
+  {
+    "title": "O Problema dos Três Corpos",
+    "tags": ["📚"],
+    "price": 1,
+    "link": "https://a.co/d/0akZx4Vj",
+    "coverImage": "../resources/wl-images/O Problema dos Três Corpos The Three-Body Problem.png",
+    "coverOffset": [0.0, -0.1],
+    "observation": "Liu Cixin"
+  },
+  {
+    "title": "Os Robôs da Alvorada",
+    "tags": ["📚"],
+    "price": 1,
+    "link": "https://a.co/d/0icb5mR1",
+    "coverImage": "../resources/wl-images/Os Robôs da Alvorada.png",
+    "coverOffset": [0.0, 0.16],
+    "observation": "Dan Simmons"
+  },
+  {
+    "title": "Devoradores de Estrelas (Project Hail Mary)",
+    "tags": ["📚"],
+    "price": 1,
+    "link": "https://a.co/d/0fGI9KtK",
+    "coverImage": "../resources/wl-images/Devoradores de Estrelas Project Hail Mary.png",
+    "observation": "Andy Weir"
+  },
+  {
+    "title": "Hyperion",
+    "tags": ["📚"],
+    "price": 1,
+    "link": "https://a.co/d/06EcQnGn",
+    "coverImage": "../resources/wl-images/Hyperion.png",
+    "coverOffset": [0.0, 0.24],
+    "observation": "Dan Simmons"
+  },
+  {
+    "title": "Robôs e Império",
+    "tags": ["📚"],
+    "price": 1,
+    "link": "https://a.co/d/0eDoGVpt",
+    "coverImage": "../resources/wl-images/Robôs e Império.png",
+    "coverOffset": [0.0, -0.12],
+    "observation": "Isaac Asimov"
+  },
+  {
+    "title": "Seveneves",
+    "tags": ["📚"],
+    "price": 1,
+    "link": "https://a.co/d/08i2Qz2C",
+    "coverImage": "../resources/wl-images/Seveneves.png",
+    "observation": "Neal Stephenson"
+  },
+  {
+    "title": "Visões de Robô",
+    "tags": ["📚"],
+    "price": 1,
+    // "link": "TODO",
+    "coverImage": "../resources/wl-images/Visões de Robô.png",
+    "observation": "Isaac Asimov"
+  },
+  {
+    "title": "Ender's Game",
+    "tags": ["📚"],
+    "price": 2,
+    // "link": "TODO",
+    "coverImage": "../resources/wl-images/Ender's Game.png",
+    "coverOffset": [0.0, -0.25],
+    "observation": "Orson Scott Card"
+  },
+  {
+    "title": "Mistborn: O Império Final",
+    "tags": ["📚", "⭐"],
+    "price": 1,
+    "link": "https://a.co/d/0e76KPcn",
+    "coverImage": "../resources/wl-images/mistborn.jpg",
+    "coverOffset": [0.0, -0.5],
+    "observation": "Brandon Sanderson"
+  },
+  {
+    "title": "The Dictionary of Obscure Sorrows",
+    "tags": ["📚"],
+    "price": 2,
+    "link": "https://a.co/d/01FsOJZb",
+    "coverImage": "../resources/wl-images/obscuresorrows.jpg",
+    "coverOffset": [0.0, -0.15],
+    "observation": "John Koenig"
+  },
+  {
+    "title": "Red Rising",
+    "tags": ["📚", "⭐"],
+    "price": 1,
+    "link": "https://a.co/d/05HksRcs",
+    "coverImage": "../resources/wl-images/redrising.jpg",
+    "coverOffset": [0.0, -0.15],
+    "observation": "Pierce Brown"
+  },
+  {
+    "title": "Bohnanza",
+    "tags": ["🎲"],
+    "price": 2,
+    "link": "https://www.papergames.com.br/bohnanza",
+    "coverImage": "../resources/wl-images/bohnanza.jpeg",
+    "observation": ""
+  },
+  {
+    "title": "Sushi Go!",
+    "tags": ["🎲"],
+    "price": 2,
+    "link": "https://www.devir.com.br/sushi-go/",
+    "coverImage": "../resources/wl-images/Sushi Go.png",
+    "observation": ""
+  },
+  {
+    "title": "Azul: Mosaico de Cristal",
+    "tags": ["🎲"],
+    "price": 2,
+    "link": "https://galapagosjogos.com.br/mosaico-de-cristal",
+    "coverImage": "../resources/wl-images/Azul Mosaico de Cristal.png",
+    "observation": "Expansão para o jogo base Azul."
+  },
+  {
+    "title": "Star Realms",
+    "tags": ["🎲"],
+    "price": 2,
+    "link": "https://www.devir.com.br/star-realms/",
+    "coverImage": "../resources/wl-images/Star Realms.png",
+    "observation": ""
+  },
+  {
+    "title": "SCOUT",
+    "tags": ["🎲"],
+    "price": 2,
+    "link": "https://www.meeplebr.com/scout",
+    "coverImage": "../resources/wl-images/SCOUT.png",
+    "coverOffset": [0.0, 0.2],
+    "observation": ""
+  },
+  {
+    "title": "Innovation",
+    "tags": ["🎲"],
+    "price": 2,
+    "link": "https://www.ludopedia.com.br/jogo/innovation",
+    "coverImage": "../resources/wl-images/Innovation.png",
+    "observation": ""
+  },
+  {
+    "title": "Decrypto",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://galapagosjogos.com.br/decrypto",
+    "coverImage": "../resources/wl-images/decrypto.jpg",
+    "coverOffset": [0.0, 0.2],
+    "observation": ""
+  },
+  {
+    "title": "Secret Hitler",
+    "tags": ["🎲", "⭐"],
+    "price": 3,
+    "link": "https://www.secrethitler.com/",
+    "coverImage": "../resources/wl-images/Secret Hitler.png",
+    "observation": ""
+  },
+  {
+    "title": "Azul: Pavilhão de Verão",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://galapagosjogos.com.br/pavilhao-de-verao",
+    "coverImage": "../resources/wl-images/azulpavilhao.jpeg",
+    "observation": ""
+  },
+  {
+    "title": "Ticket to Ride",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://galapagosjogos.com.br/ticket-to-ride",
+    "coverImage": "../resources/wl-images/Ticket to Ride.png",
+    "observation": ""
+  },
+  {
+    "title": "Pandemic",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://galapagosjogos.com.br/pandemic",
+    "coverImage": "../resources/wl-images/Pandemic.png",
+    "observation": ""
+  },
+  {
+    "title": "Marrakech",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://www.papergames.com.br/marrakech",
+    "coverImage": "../resources/wl-images/Marrakech.png",
+    "observation": ""
+  },
+  {
+    "title": "Wingspan",
+    "tags": ["🎲", "⭐"],
+    "price": 3,
+    "link": "https://grokgames.com.br/wingspan",
+    "coverImage": "../resources/wl-images/Wingspan.png",
+    "observation": ""
+  },
+  {
+    "title": "Terra Mystica",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://www.devir.com.br/terra-mystica/",
+    "coverImage": "../resources/wl-images/Terra Mystica.png",
+    "observation": ""
+  },
+  {
+    "title": "ROOT",
+    "tags": ["🎲", "⭐"],
+    "price": 3,
+    "link": "https://meeplebr.com/root",
+    "coverImage": "../resources/wl-images/ROOT.png",
+    "observation": ""
+  },
+  {
+    "title": "Scythe",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://galapagosjogos.com.br/scythe",
+    "coverImage": "../resources/wl-images/Scythe.png",
+    "observation": ""
+  },
+    {
+    "title": "The Shipwreck Arcana",
+    "tags": ["🎲", "⭐"],
+    "price": 2,
+    "link": "https://www.meromorphgames.com/shop/shipwreck-arcana",
+    "coverImage": "../resources/wl-images/shipwreck.webp",
+    "observation": ""
+  },
+  {
+    "title": "Terraforming Mars",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://meeplebr.com/terraforming-mars",
+    "coverImage": "../resources/wl-images/Terraforming Mars.png",
+    "observation": ""
+  },
+  {
+    "title": "Duna: Imperium",
+    "tags": ["🎲", "⭐"],
+    "price": 3,
+    "link": "https://meeplebr.com/duna-imperium",
+    "coverImage": "../resources/wl-images/Duna Imperium.png",
+    "observation": ""
+  },
+  {
+    "title": "Clank! Um Jogo de Aventura em Masmorras",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://meeplebr.com/clank",
+    "coverImage": "../resources/wl-images/Clank!.png",
+    "observation": ""
+  },
+  {
+    "title": "7 Wonders",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://galapagosjogos.com.br/7-wonders",
+    "coverImage": "../resources/wl-images/7 Wonders.png",
+    "observation": ""
+  },
+  {
+    "title": "Projeto Gaia",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://www.devir.com.br/projeto-gaia/",
+    "coverImage": "../resources/wl-images/Projeto Gaia.png",
+    "observation": ""
+  },
+  {
+    "title": "High Society",
+    "tags": ["🎲"],
+    "price": 1,
+    "link": "https://www.papergames.com.br/high-society",
+    "coverImage": "../resources/wl-images/highsociety.png",
+    "coverOffset": [0.0, -0.5],
+    "observation": ""
+  },
+  {
+    "title": "Cosmic Encounter",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://galapagosjogos.com.br/cosmic-encounter",
+    "coverImage": "../resources/wl-images/Cosmic Encounter.png",
+    "observation": ""
+  },
+  {
+    "title": "Raspberry Pi Zero",
+    "tags": ["⚙️"],
+    "price": 3,
+    "link": "https://www.raspberrypi.com/products/raspberry-pi-zero/",
+    "coverImage": "../resources/wl-images/Raspberry Pi Zero.png",
+    "observation": ""
+  },
+  {
+    "title": "Raspberry Pi 4 (4GB)",
+    "tags": ["⚙️"],
+    "price": 3,
+    "link": "https://www.raspberrypi.com/products/raspberry-pi-4-model-b/",
+    "coverImage": "../resources/wl-images/Raspberry Pi 4 (2-8 Gb).png",
+    "observation": "Ou um Raspberry Pi 3"
+  },
+  {
+    "title": "Henson AL13",
+    "tags": ["🌟"],
+    "price": 3,
+    "link": "https://hensonshaving.com/products/henson-al13-in-aircraft-aluminum",
+    "coverImage": "../resources/wl-images/henson.webp",
+    "coverOffset": [0.0, -0.5],
+    "observation": ""
+  },
+  {
+    "title": "Steam Frame",
+    "tags": ["🌟"],
+    "price": 3,
+    "link": "https://store.steampowered.com/hardware/steamframe",
+    "coverImage": "../resources/wl-images/steamframe.jpg",
+    "observation": ""
+  },
+  {
+    "title": "Melomania P100 SE",
+    "tags": ["🌟"],
+    "price": 3,
+    "link": "https://www.cambridgeaudio.com/row/en/products/headphones/melomania/melomania-p100-se",
+    "coverImage": "../resources/wl-images/melomania.jpg",
+    "observation": ""
+  },
+  {
+    "title": "LTT Commuter Backpack",
+    "tags": ["🌟"],
+    "price": 3,
+    "link": "https://www.lttstore.com/products/commuter-backpack",
+    "coverImage": "../resources/wl-images/lttbackpack.webp",
+    "observation": ""
+  },
+  {
+    "title": "Playdate",
+    "tags": ["🌟"],
+    "price": 3,
+    "link": "https://play.date/",
+    "coverImage": "../resources/wl-images/playdate.png",
+    "observation": ""
+  }
+]

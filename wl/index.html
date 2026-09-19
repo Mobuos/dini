@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Wishlist</title>
+
+        <link rel="stylesheet" href="../css/mess.css?v=8" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Hanken+Grotesk:wght@500;600;900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <main class="wl-main">
+            <div class="wl-filters-bar">
+                <div class="wl-filters-group wl-filters-exclusive">
+                    <button class="wl-chip active" data-type="exclusive" data-filter="all">
+                        Todos
+                    </button>
+                    <button class="wl-chip" data-type="exclusive" data-tag="📚" data-obs="Prefiro os livros em inglês :)">
+                        📚 Livros
+                    </button>
+                    <button class="wl-chip" data-type="exclusive" data-tag="📚">
+                        ⚙️ Tech
+                    </button>
+                    <button class="wl-chip" data-type="exclusive" data-tag="📚">
+                        🎲 Jogos
+                    </button>
+                </div>
+
+                <div class="wl-filter-divider"></div>
+
+                <div class="wl-filters-group wl-filters-additive">
+                    <button class="wl-chip" data-type="additive" data-tag="⭐">
+                        ⭐
+                    </button>
+                </div>
+
+                <button id="wl-shuffle-btn" class="wl-chip wl-chip-circle active" aria-label="Shuffle items">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shuffle"><path d="m18 14 4 4-4 4"/><path d="m18 2 4 4-4 4"/><path d="M2 18h1.973a4 4 0 0 0 3.3-1.7l5.454-8.6a4 4 0 0 1 3.3-1.7H22"/><path d="M2 6h1.972a4 4 0 0 1 3.6 2.2"/><path d="M22 18h-6.041a4 4 0 0 1-3.3-1.8l-.359-.45"/></svg>
+                </button>
+            </div>
+
+            <div id="wl-filter-obs" class="wl-filter-obs"></div>
+
+            <div id="wishlist-grid" class="wl-grid"></div>
+        </main>
+
+        <div id="wl-image-modal" class="wl-modal" aria-hidden="true">
+            <div class="wl-modal-backdrop" id="wl-modal-backdrop"></div>
+            <div class="wl-modal-content">
+                <button id="wl-modal-close" class="wl-modal-close" aria-label="Close modal">&times;</button>
+                <img id="wl-modal-img" src="" alt="Full view" />
+            </div>
+        </div>
+
+        <script>
+            let wishlistData = [];
+            const state = {
+                exclusiveTag: 'all',
+                additiveTags: new Set()
+            };
+
+            const emojiToText = {
+                '📚': 'Livro',
+                '⭐': 'Estrela',
+                '⚙️': 'Tecnologia',
+                '🎲': 'Jogo de Tabuleiro',
+                '🌟': 'Especial'
+            };
+
+            const customFilters = {
+                all: () => true
+            };
+
+            let lastStarClickTime = 0;
+            let isShuffleActive = true;
+
+            function shuffleArray(array) {
+                const arr = [...array];
+                for (let i = arr.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+                return arr;
+            }
+
+            function parseJSONC(text) {
+                const cleanText = text
+                    .replace(/("([^"\\]|\\.)*")|\/\*[\s\S]*?\*\/|\/\/.*/g, (match, group1) => {
+                        return group1 ? group1 : '';
+                    })
+                    .replace(/,\s*([\]}])/g, '$1');
+                return JSON.parse(cleanText);
+            }
+
+            async function initWishlist() {
+                try {
+                    let res = await fetch('../data/wishlist.jsonc');
+                    if (!res.ok) {
+                        res = await fetch('../data/wishlist.json');
+                    }
+                    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+                    const text = await res.text();
+                    wishlistData = parseJSONC(text);
+                    renderWishlist();
+                } catch (err) {
+                    console.error('Failed to load wishlist data:', err);
+                    document.getElementById('wishlist-grid').innerHTML =
+                        `<div class="wl-empty-msg">Error loading wishlist items.</div>`;
+                }
+
+                setupFilterChips();
+                setupShuffleButton();
+                setupModal();
+            }
+
+            function setupShuffleButton() {
+                const shuffleBtn = document.getElementById('wl-shuffle-btn');
+                if (!shuffleBtn) return;
+
+                shuffleBtn.addEventListener('click', () => {
+                    isShuffleActive = !isShuffleActive;
+                    if (isShuffleActive) {
+                        shuffleBtn.classList.add('active');
+                    } else {
+                        shuffleBtn.classList.remove('active');
+                    }
+                    renderWishlist();
+                });
+            }
+
+            function setupFilterChips() {
+                const chips = document.querySelectorAll('.wl-chip');
+                chips.forEach(chip => {
+                    chip.addEventListener('click', () => {
+                        const type = chip.dataset.type;
+                        const tag = chip.dataset.tag;
+                        const filterKey = chip.dataset.filter;
+
+                        if (type === 'additive' && (tag === '⭐' || tag === '🌟')) {
+                            const now = Date.now();
+                            if (chip.dataset.tag === '🌟') {
+                                chip.dataset.tag = '⭐';
+                                chip.textContent = '⭐';
+                                chip.classList.remove('active');
+                                state.additiveTags.delete('🌟');
+                            } else if (now - lastStarClickTime < 450) {
+                                chip.dataset.tag = '🌟';
+                                chip.textContent = '🌟';
+                                chip.classList.add('active');
+                                state.additiveTags.delete('⭐');
+                                state.additiveTags.add('🌟');
+                            } else {
+                                if (chip.classList.contains('active')) {
+                                    chip.classList.remove('active');
+                                    state.additiveTags.delete('⭐');
+                                } else {
+                                    chip.classList.add('active');
+                                    state.additiveTags.add('⭐');
+                                }
+                            }
+                            lastStarClickTime = now;
+                        } else if (type === 'exclusive') {
+                            document.querySelectorAll('.wl-chip[data-type="exclusive"]')
+                                .forEach(c => c.classList.remove('active'));
+                            chip.classList.add('active');
+                            state.exclusiveTag = tag || filterKey || 'all';
+                        } else if (type === 'additive') {
+                            const targetVal = tag || filterKey;
+                            if (chip.classList.contains('active')) {
+                                chip.classList.remove('active');
+                                state.additiveTags.delete(targetVal);
+                            } else {
+                                chip.classList.add('active');
+                                state.additiveTags.add(targetVal);
+                            }
+                        }
+
+                        renderWishlist();
+                    });
+                });
+            }
+
+            function parseTags(tagAttr) {
+                if (!tagAttr) return [];
+                return tagAttr.split(/[\s,]+/).filter(t => t.trim().length > 0);
+            }
+
+            function itemMatchesFilters(item) {
+                const itemTags = item.tags || [];
+                const isGlowingActive = state.additiveTags.has('🌟');
+
+                if (itemTags.includes('🌟') && !isGlowingActive) {
+                    return false;
+                }
+
+                if (state.exclusiveTag !== 'all') {
+                    if (customFilters[state.exclusiveTag]) {
+                        if (!customFilters[state.exclusiveTag](item)) return false;
+                    } else {
+                        const reqTags = parseTags(state.exclusiveTag);
+                        if (!reqTags.every(t => itemTags.includes(t))) return false;
+                    }
+                }
+
+                for (const addTagStr of state.additiveTags) {
+                    if (customFilters[addTagStr]) {
+                        if (!customFilters[addTagStr](item)) return false;
+                    } else {
+                        const reqTags = parseTags(addTagStr);
+                        if (!reqTags.every(t => itemTags.includes(t))) return false;
+                    }
+                }
+
+                return true;
+            }
+
+            function updateFilterObservation() {
+                const activeChips = document.querySelectorAll('.wl-chip.active[data-obs]');
+                const obsTexts = Array.from(activeChips)
+                    .map(c => c.dataset.obs)
+                    .filter(txt => txt && txt.trim() !== '');
+
+                const obsContainer = document.getElementById('wl-filter-obs');
+                if (obsContainer) {
+                    if (obsTexts.length > 0) {
+                        obsContainer.textContent = obsTexts.join(' • ');
+                        obsContainer.style.display = 'block';
+                    } else {
+                        obsContainer.textContent = '';
+                        obsContainer.style.display = 'none';
+                    }
+                }
+            }
+
+            function renderWishlist() {
+                updateFilterObservation();
+
+                const grid = document.getElementById('wishlist-grid');
+                grid.innerHTML = '';
+
+                let filtered = wishlistData.filter(itemMatchesFilters);
+
+                if (isShuffleActive) {
+                    filtered = shuffleArray(filtered);
+                }
+
+                if (filtered.length === 0) {
+                    grid.innerHTML = `<div class="wl-empty-msg">No items match the selected filters.</div>`;
+                    return;
+                }
+
+                filtered.forEach(item => {
+                    const card = createCardElement(item);
+                    grid.appendChild(card);
+                });
+            }
+
+            function createCardElement(item) {
+                const card = document.createElement('div');
+                card.className = 'wl-card';
+
+                if (item.coverImage && item.coverImage.trim() !== '') {
+                    const bleed = document.createElement('div');
+                    bleed.className = 'wl-card-bleed';
+                    bleed.style.backgroundImage = `url('${item.coverImage}')`;
+                    if (item.coverOffset && Array.isArray(item.coverOffset) && item.coverOffset.length === 2) {
+                        const offsetX = parseFloat(item.coverOffset[0]) || 0;
+                        const offsetY = parseFloat(item.coverOffset[1]) || 0;
+                        const posX = 50 + (offsetX * 100);
+                        const posY = 50 + (offsetY * 100);
+                        bleed.style.backgroundPosition = `${posX}% ${posY}%`;
+                    }
+                    card.appendChild(bleed);
+                }
+
+                if (item.coverImage && item.coverImage.trim() !== '') {
+                    const coverWrapper = document.createElement('div');
+                    coverWrapper.className = 'wl-card-cover-wrapper';
+                    
+                    const img = document.createElement('img');
+                    img.className = 'wl-card-cover';
+                    img.src = item.coverImage;
+                    img.alt = item.title || 'Wishlist item';
+                    img.onerror = () => {
+                        coverWrapper.remove();
+                        const bleed = card.querySelector('.wl-card-bleed');
+                        if (bleed) bleed.remove();
+                    };
+
+                    if (item.coverOffset && Array.isArray(item.coverOffset) && item.coverOffset.length === 2) {
+                        const offsetX = parseFloat(item.coverOffset[0]) || 0;
+                        const offsetY = parseFloat(item.coverOffset[1]) || 0;
+                        const posX = 50 + (offsetX * 100);
+                        const posY = 50 + (offsetY * 100);
+                        img.style.objectPosition = `${posX}% ${posY}%`;
+                    }
+                    
+                    coverWrapper.appendChild(img);
+                    coverWrapper.addEventListener('click', () => {
+                        openImageModal(item.coverImage, item.title);
+                    });
+
+                    card.appendChild(coverWrapper);
+                }
+
+                const body = document.createElement('div');
+                body.className = 'wl-card-body';
+
+                const firstTag = (item.tags && item.tags.length > 0) ? item.tags[0] : '';
+                if (firstTag) {
+                    const catElem = document.createElement('span');
+                    catElem.className = 'wl-card-category';
+                    const tagText = emojiToText[firstTag] ? ` ${emojiToText[firstTag]}` : '';
+                    catElem.textContent = `${firstTag}${tagText}`;
+                    body.appendChild(catElem);
+                }
+
+                const titleElem = document.createElement('h3');
+                titleElem.className = 'wl-card-title';
+                titleElem.textContent = item.title || 'Untitled';
+                body.appendChild(titleElem);
+
+                if (item.observation && item.observation.trim() !== '') {
+                    const obsElem = document.createElement('div');
+                    obsElem.className = 'wl-card-observation';
+                    obsElem.textContent = item.observation;
+
+                    if (item.observation.length > 90) {
+                        obsElem.classList.add('clamped');
+                        
+                        const toggleBtn = document.createElement('button');
+                        toggleBtn.className = 'wl-mostrar-mais';
+                        toggleBtn.textContent = 'mostrar mais...';
+                        toggleBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            const isClamped = obsElem.classList.toggle('clamped');
+                            toggleBtn.textContent = isClamped ? 'mostrar mais...' : 'mostrar menos';
+                        });
+
+                        body.appendChild(obsElem);
+                        body.appendChild(toggleBtn);
+                    } else {
+                        body.appendChild(obsElem);
+                    }
+                }
+
+                card.appendChild(body);
+
+                const footer = document.createElement('div');
+                footer.className = 'wl-card-footer';
+
+                const footerLeft = document.createElement('div');
+                footerLeft.className = 'wl-card-footer-left';
+
+                const extraTags = (item.tags && item.tags.length > 1) ? item.tags.slice(1) : [];
+                if (extraTags.length > 0) {
+                    const extraSpan = document.createElement('span');
+                    extraSpan.className = 'wl-card-extra-tags';
+                    extraSpan.textContent = extraTags.join(' ');
+                    footerLeft.appendChild(extraSpan);
+
+                    const divider = document.createElement('div');
+                    divider.className = 'wl-card-footer-divider';
+                    footerLeft.appendChild(divider);
+                }
+
+                const price = Math.min(Math.max(parseInt(item.price) || 1, 1), 3);
+                const priceElem = document.createElement('div');
+                priceElem.className = 'wl-price-indicator';
+
+                for (let i = 1; i <= 3; i++) {
+                    const dollarSpan = document.createElement('span');
+                    dollarSpan.className = i <= price ? 'wl-dollar active' : 'wl-dollar inactive';
+                    dollarSpan.textContent = '$';
+                    priceElem.appendChild(dollarSpan);
+                }
+
+                footerLeft.appendChild(priceElem);
+                footer.appendChild(footerLeft);
+
+                if (item.link && item.link.trim() !== '') {
+                    footer.classList.add('has-link');
+                    footer.addEventListener('click', () => {
+                        window.open(item.link, '_blank', 'noopener,noreferrer');
+                    });
+
+                    const linkBtn = document.createElement('a');
+                    linkBtn.className = 'wl-link-btn';
+                    linkBtn.href = item.link;
+                    linkBtn.target = '_blank';
+                    linkBtn.rel = 'noopener noreferrer';
+                    linkBtn.ariaLabel = 'Open item link';
+                    linkBtn.textContent = '↗';
+
+                    linkBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                    });
+
+                    footer.appendChild(linkBtn);
+                }
+
+                card.appendChild(footer);
+
+                return card;
+            }
+
+            function setupModal() {
+                const backdrop = document.getElementById('wl-modal-backdrop');
+                const closeBtn = document.getElementById('wl-modal-close');
+
+                backdrop.addEventListener('click', closeImageModal);
+                closeBtn.addEventListener('click', closeImageModal);
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') closeImageModal();
+                });
+            }
+
+            function openImageModal(src, title) {
+                const modal = document.getElementById('wl-image-modal');
+                const img = document.getElementById('wl-modal-img');
+                img.src = src;
+                img.alt = title || 'Wishlist image';
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeImageModal() {
+                const modal = document.getElementById('wl-image-modal');
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            document.addEventListener('DOMContentLoaded', initWishlist);
+        </script>
+    </body>
+</html>
