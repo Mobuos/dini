@@ -299,6 +299,22 @@
     "observation": ""
   },
   {
+    "title": "Sail",
+    "tags": ["🎲"],
+    "price": 2,
+    "link": "https://a.co/d/0amv553R",
+    "coverImage": "../resources/wl-images/sail.png",
+    "observation": ""
+  },
+  {
+    "title": "Patchwork",
+    "tags": ["🎲", "⭐"],
+    "price": 2,
+    "link": "https://a.co/d/06l9ZNqg",
+    "coverImage": "../resources/wl-images/patchwork.jpg",
+    "observation": ""
+  },
+  {
     "title": "Raspberry Pi Zero",
     "tags": ["⚙️"],
     "price": 3,
