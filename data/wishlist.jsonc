@@ -79,7 +79,7 @@
   },
   {
     "title": "The Dictionary of Obscure Sorrows",
-    "tags": ["📚"],
+    "tags": ["📚", "🌎"],
     "price": 2,
     "link": "https://a.co/d/01FsOJZb",
     "coverImage": "../resources/wl-images/obscuresorrows.jpg",
@@ -146,7 +146,7 @@
   },
   {
     "title": "Innovation",
-    "tags": ["🎲"],
+    "tags": ["🎲", "🌎"],
     "price": 2,
     "link": "https://www.ludopedia.com.br/jogo/innovation",
     "coverImage": "../resources/wl-images/Innovation.png",
@@ -163,7 +163,7 @@
   },
   {
     "title": "Secret Hitler",
-    "tags": ["🎲", "⭐"],
+    "tags": ["🎲", "⭐", "🌎"],
     "price": 3,
     "link": "https://www.secrethitler.com/",
     "coverImage": "../resources/wl-images/Secret Hitler.png",
@@ -205,7 +205,7 @@
     "title": "Wingspan",
     "tags": ["🎲", "⭐"],
     "price": 3,
-    "link": "https://grokgames.com.br/wingspan",
+    "link": "https://loja.grokgames.com.br/wingspan",
     "coverImage": "../resources/wl-images/Wingspan.png",
     "observation": ""
   },
@@ -221,7 +221,7 @@
     "title": "ROOT",
     "tags": ["🎲", "⭐"],
     "price": 3,
-    "link": "https://meeplebr.com/root",
+    "link": "https://meeplebr.com/product/root/",
     "coverImage": "../resources/wl-images/ROOT.png",
     "observation": ""
   },
@@ -235,7 +235,7 @@
   },
     {
     "title": "The Shipwreck Arcana",
-    "tags": ["🎲", "⭐"],
+    "tags": ["🎲", "⭐", "🌎"],
     "price": 2,
     "link": "https://www.meromorphgames.com/shop/shipwreck-arcana",
     "coverImage": "../resources/wl-images/shipwreck.webp",
@@ -245,7 +245,7 @@
     "title": "Terraforming Mars",
     "tags": ["🎲"],
     "price": 3,
-    "link": "https://meeplebr.com/terraforming-mars",
+    "link": "https://meeplebr.com/product/terraforming-mars/",
     "coverImage": "../resources/wl-images/Terraforming Mars.png",
     "observation": ""
   },
@@ -253,7 +253,7 @@
     "title": "Duna: Imperium",
     "tags": ["🎲", "⭐"],
     "price": 3,
-    "link": "https://meeplebr.com/duna-imperium",
+    "link": "https://www.asmodee.com.br/duna-imperium/produto/DUN001",
     "coverImage": "../resources/wl-images/Duna Imperium.png",
     "observation": ""
   },
@@ -316,7 +316,7 @@
   },
   {
     "title": "Henson AL13",
-    "tags": ["🌟"],
+    "tags": ["🌟", "🌎"],
     "price": 3,
     "link": "https://hensonshaving.com/products/henson-al13-in-aircraft-aluminum",
     "coverImage": "../resources/wl-images/henson.webp",
@@ -325,7 +325,7 @@
   },
   {
     "title": "Steam Frame",
-    "tags": ["🌟", "⚙️"],
+    "tags": ["🌟", "⚙️", "🌎"],
     "price": 3,
     "link": "https://store.steampowered.com/hardware/steamframe",
     "coverImage": "../resources/wl-images/steamframe.jpg",
@@ -333,7 +333,7 @@
   },
   {
     "title": "Melomania P100 SE",
-    "tags": ["🌟", "⚙️"],
+    "tags": ["🌟", "⚙️", "🌎"],
     "price": 3,
     "link": "https://www.cambridgeaudio.com/row/en/products/headphones/melomania/melomania-p100-se",
     "coverImage": "../resources/wl-images/melomania.jpg",
@@ -341,7 +341,7 @@
   },
   {
     "title": "LTT Commuter Backpack",
-    "tags": ["🌟"],
+    "tags": ["🌟", "🌎"],
     "price": 3,
     "link": "https://www.lttstore.com/products/commuter-backpack",
     "coverImage": "../resources/wl-images/lttbackpack.webp",
@@ -349,7 +349,7 @@
   },
   {
     "title": "Playdate",
-    "tags": ["🌟", "⚙️"],
+    "tags": ["🌟", "⚙️", "🌎"],
     "price": 3,
     "link": "https://play.date/",
     "coverImage": "../resources/wl-images/playdate.png",
