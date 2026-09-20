@@ -131,7 +131,7 @@
     "title": "Star Realms",
     "tags": ["🎲"],
     "price": 2,
-    "link": "https://www.devir.com.br/star-realms/",
+    "link": "https://ludopedia.com.br/jogo/star-realms",
     "coverImage": "../resources/wl-images/Star Realms.png",
     "observation": ""
   },
@@ -139,7 +139,7 @@
     "title": "SCOUT",
     "tags": ["🎲"],
     "price": 2,
-    "link": "https://www.meeplebr.com/scout",
+    "link": "https://a.co/d/0hIkoEjU",
     "coverImage": "../resources/wl-images/SCOUT.png",
     "coverOffset": [0.0, 0.2],
     "observation": ""
@@ -148,7 +148,7 @@
     "title": "Innovation",
     "tags": ["🎲", "🌎"],
     "price": 2,
-    "link": "https://www.ludopedia.com.br/jogo/innovation",
+    "link": "https://a.co/d/0h9A2CRB",
     "coverImage": "../resources/wl-images/Innovation.png",
     "observation": ""
   },
@@ -173,7 +173,7 @@
     "title": "Azul: Pavilhão de Verão",
     "tags": ["🎲"],
     "price": 3,
-    "link": "https://galapagosjogos.com.br/pavilhao-de-verao",
+    "link": "https://a.co/d/0817ZCnf",
     "coverImage": "../resources/wl-images/azulpavilhao.jpeg",
     "observation": ""
   },
@@ -209,11 +209,12 @@
     "coverImage": "../resources/wl-images/Wingspan.png",
     "observation": ""
   },
+  // Não achei
   {
     "title": "Terra Mystica",
     "tags": ["🎲"],
     "price": 3,
-    "link": "https://www.devir.com.br/terra-mystica/",
+    // "link": "TODO",
     "coverImage": "../resources/wl-images/Terra Mystica.png",
     "observation": ""
   },
@@ -279,15 +280,6 @@
     "price": 3,
     "link": "https://www.devir.com.br/projeto-gaia/",
     "coverImage": "../resources/wl-images/Projeto Gaia.png",
-    "observation": ""
-  },
-  {
-    "title": "High Society",
-    "tags": ["🎲"],
-    "price": 1,
-    "link": "https://www.papergames.com.br/high-society",
-    "coverImage": "../resources/wl-images/highsociety.png",
-    "coverOffset": [0.0, -0.5],
     "observation": ""
   },
   {
