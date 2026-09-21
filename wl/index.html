@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Wishlist</title>
 
-        <link rel="stylesheet" href="../css/mess.css?v=8" />
+        <link rel="stylesheet" href="../css/mess.css?v=10" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -64,6 +64,7 @@
                 exclusiveTag: 'all',
                 additiveTags: new Set()
             };
+            const wishlistStateStorageKey = 'dini-wishlist-state';
 
             const emojiToText = {
                 '📚': 'Livro',
@@ -79,6 +80,75 @@
 
             let lastStarClickTime = 0;
             let isShuffleActive = true;
+            let scrollRestorePending = false;
+
+            function saveWishlistState() {
+                try {
+                    localStorage.setItem(wishlistStateStorageKey, JSON.stringify({
+                        exclusiveTag: state.exclusiveTag,
+                        additiveTags: Array.from(state.additiveTags),
+                        isShuffleActive,
+                        scrollY: window.scrollY
+                    }));
+                } catch (err) {
+                    console.warn('Unable to save wishlist state:', err);
+                }
+            }
+
+            function restoreWishlistState() {
+                try {
+                    const savedState = JSON.parse(localStorage.getItem(wishlistStateStorageKey) || 'null');
+                    if (!savedState || typeof savedState !== 'object') return;
+
+                    if (typeof savedState.exclusiveTag === 'string') {
+                        state.exclusiveTag = savedState.exclusiveTag;
+                    }
+                    if (Array.isArray(savedState.additiveTags)) {
+                        state.additiveTags = new Set(savedState.additiveTags.filter(tag => typeof tag === 'string'));
+                    }
+                    if (typeof savedState.isShuffleActive === 'boolean') {
+                        isShuffleActive = savedState.isShuffleActive;
+                    }
+                    if (Number.isFinite(savedState.scrollY) && savedState.scrollY > 0) {
+                        scrollRestorePending = true;
+                    }
+                } catch (err) {
+                    console.warn('Unable to restore wishlist state:', err);
+                }
+            }
+
+            function syncFilterControls() {
+                document.querySelectorAll('.wl-chip[data-type="exclusive"]').forEach(chip => {
+                    const chipValue = chip.dataset.tag || chip.dataset.filter || 'all';
+                    chip.classList.toggle('active', chipValue === state.exclusiveTag);
+                });
+
+                const starChip = document.querySelector('.wl-chip[data-type="additive"]');
+                if (starChip) {
+                    const isGlowing = state.additiveTags.has('🌟');
+                    const isStarActive = state.additiveTags.has('⭐') || isGlowing;
+                    starChip.dataset.tag = isGlowing ? '🌟' : '⭐';
+                    starChip.textContent = isGlowing ? '🌟' : '⭐';
+                    starChip.classList.toggle('active', isStarActive);
+                }
+
+                document.getElementById('wl-shuffle-btn')?.classList.toggle('active', isShuffleActive);
+            }
+
+            function restoreScrollPosition() {
+                if (!scrollRestorePending) return;
+
+                try {
+                    const savedState = JSON.parse(localStorage.getItem(wishlistStateStorageKey) || 'null');
+                    if (Number.isFinite(savedState?.scrollY)) {
+                        requestAnimationFrame(() => window.scrollTo(0, savedState.scrollY));
+                    }
+                } catch (err) {
+                    console.warn('Unable to restore wishlist scroll position:', err);
+                } finally {
+                    scrollRestorePending = false;
+                }
+            }
 
             function shuffleArray(array) {
                 const arr = [...array];
@@ -99,6 +169,13 @@
             }
 
             async function initWishlist() {
+                restoreWishlistState();
+                syncFilterControls();
+                if ('scrollRestoration' in history) {
+                    history.scrollRestoration = 'manual';
+                }
+                window.addEventListener('scroll', saveWishlistState, { passive: true });
+
                 try {
                     let res = await fetch('../data/wishlist.jsonc');
                     if (!res.ok) {
@@ -108,6 +185,7 @@
                     const text = await res.text();
                     wishlistData = parseJSONC(text);
                     renderWishlist();
+                    restoreScrollPosition();
                 } catch (err) {
                     console.error('Failed to load wishlist data:', err);
                     document.getElementById('wishlist-grid').innerHTML =
@@ -130,6 +208,7 @@
                     } else {
                         shuffleBtn.classList.remove('active');
                     }
+                    saveWishlistState();
                     renderWishlist();
                 });
             }
@@ -181,6 +260,7 @@
                             }
                         }
 
+                        saveWishlistState();
                         renderWishlist();
                     });
                 });
@@ -260,6 +340,13 @@
                     const card = createCardElement(item);
                     grid.appendChild(card);
                 });
+
+                if (grid.offsetTop + grid.offsetHeight > window.innerHeight) {
+                    const endMessage = document.createElement('div');
+                    endMessage.className = 'wl-end-message';
+                    endMessage.textContent = 'Chegou no fim :)';
+                    grid.appendChild(endMessage);
+                }
             }
 
             function createCardElement(item) {

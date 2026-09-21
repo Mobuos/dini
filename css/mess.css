@@ -266,11 +266,31 @@ input.center {
 
 /* Filter Chips Bar */
 .wl-filters-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-block-end: 28px;
+    margin-block: -36px 28px;
+    padding-block: 18px;
     flex-wrap: wrap;
+}
+
+.wl-filters-bar::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    inset: 0 auto 0 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: rgba(22, 24, 25, 0.98);
+}
+
+.wl-filters-bar > * {
+    position: relative;
+    z-index: 1;
 }
 
 .wl-filters-group {
@@ -607,6 +627,15 @@ a.wl-link-btn:focus-visible {
     font-size: 1em;
 }
 
+.wl-end-message {
+    grid-column: 1 / -1;
+    padding-block: 28px 12px;
+    color: rgba(255, 254, 234, 0.55);
+    font-size: 0.9em;
+    font-style: italic;
+    text-align: center;
+}
+
 /* Lightbox Modal */
 .wl-modal {
     position: fixed;
@@ -683,4 +712,49 @@ button.wl-modal-close:focus-visible {
 button.wl-modal-close:hover {
     color: rgba(255, 254, 234, 0.9);
     background: transparent;
+}
+
+@media (max-width: 600px) {
+    .wl-main {
+        padding-inline: 16px;
+        padding-block-start: 28px;
+    }
+
+    .wl-filters-bar {
+        gap: 10px;
+        margin-inline: -16px;
+        margin-block-start: -28px;
+        padding-inline: 16px;
+        padding-block: 14px;
+    }
+
+    .wl-filters-exclusive {
+        flex: 1 1 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .wl-filters-exclusive .wl-chip {
+        width: 100%;
+        padding-inline: 10px;
+    }
+
+    .wl-filter-divider {
+        display: none;
+    }
+
+    .wl-filters-additive {
+        gap: 8px;
+    }
+
+    .wl-chip-circle,
+    button.wl-chip-circle {
+        margin-inline-start: auto;
+    }
+
+    .wl-grid {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+        gap: 16px;
+    }
 }
