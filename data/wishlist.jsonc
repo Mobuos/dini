@@ -96,6 +96,22 @@
     "observation": "Pierce Brown"
   },
   {
+    "title": "There Is No Antimemetics Division",
+    "tags": ["📚"],
+    "price": 2,
+    "link": "https://a.co/d/02EAraZV",
+    "coverImage": "../resources/wl-images/meme.jpg",
+    "observation": "qntm"
+  },
+  {
+    "title": "The Electric State",
+    "tags": ["📚"],
+    "price": 2,
+    "link": "https://a.co/d/0jeYQkC3",
+    "coverImage": "../resources/wl-images/electric.jpg",
+    "observation": "Simon Stålenhag"
+  },
+  {
     "title": "Steam",
     "tags": ["🕹️"],
     "price": 1,
@@ -125,7 +141,7 @@
     "price": 2,
     "link": "https://galapagosjogos.com.br/mosaico-de-cristal",
     "coverImage": "../resources/wl-images/Azul Mosaico de Cristal.png",
-    "observation": "Expansão para o jogo base Azul."
+    "observation": "Expansão para o jogo base, Azul"
   },
   {
     "title": "Star Realms",
@@ -137,7 +153,7 @@
   },
   {
     "title": "SCOUT",
-    "tags": ["🎲"],
+    "tags": ["🎲", "⭐"],
     "price": 2,
     "link": "https://a.co/d/0hIkoEjU",
     "coverImage": "../resources/wl-images/SCOUT.png",
@@ -181,16 +197,8 @@
     "title": "Ticket to Ride",
     "tags": ["🎲"],
     "price": 3,
-    "link": "https://galapagosjogos.com.br/ticket-to-ride",
+    "link": "https://a.co/d/04mssfNF",
     "coverImage": "../resources/wl-images/Ticket to Ride.png",
-    "observation": ""
-  },
-  {
-    "title": "Pandemic",
-    "tags": ["🎲"],
-    "price": 3,
-    "link": "https://galapagosjogos.com.br/pandemic",
-    "coverImage": "../resources/wl-images/Pandemic.png",
     "observation": ""
   },
   {
@@ -199,14 +207,16 @@
     "price": 2,
     "link": "https://loja.grokgames.com.br/marrakech",
     "coverImage": "../resources/wl-images/Marrakech.png",
+    "coverOffset": [0.0, -0.5],
     "observation": ""
   },
   {
     "title": "Wingspan",
     "tags": ["🎲", "⭐"],
     "price": 3,
-    "link": "https://loja.grokgames.com.br/wingspan",
+    "link": "https://a.co/d/098VBeIR",
     "coverImage": "../resources/wl-images/Wingspan.png",
+    "coverOffset": [0.0, -0.5],
     "observation": ""
   },
   // Não achei
@@ -223,7 +233,7 @@
     "tags": ["🎲", "⭐"],
     "price": 3,
     "link": "https://meeplebr.com/product/root/",
-    "coverImage": "../resources/wl-images/ROOT.png",
+    "coverImage": "../resources/wl-images/root.jpg",
     "observation": ""
   },
   {
@@ -248,6 +258,7 @@
     "price": 3,
     "link": "https://meeplebr.com/product/terraforming-mars/",
     "coverImage": "../resources/wl-images/Terraforming Mars.png",
+    "coverOffset": [0, -0.4],
     "observation": ""
   },
   {
@@ -255,23 +266,26 @@
     "tags": ["🎲", "⭐"],
     "price": 3,
     "link": "https://www.asmodee.com.br/duna-imperium/produto/DUN001",
-    "coverImage": "../resources/wl-images/Duna Imperium.png",
+    "coverImage": "../resources/wl-images/dune.jpg",
+    "coverOffset": [0, -0.4],
     "observation": ""
   },
   {
-    "title": "Clank! Um Jogo de Aventura em Masmorras",
+    "title": "Clank!",
     "tags": ["🎲"],
     "price": 3,
-    "link": "https://meeplebr.com/clank",
-    "coverImage": "../resources/wl-images/Clank!.png",
+    "link": "https://a.co/d/09tPl0gC",
+    "coverImage": "../resources/wl-images/clank.webp",
+    "coverOffset": [0, -0.45],
     "observation": ""
   },
   {
     "title": "7 Wonders",
     "tags": ["🎲"],
     "price": 3,
-    "link": "https://galapagosjogos.com.br/7-wonders",
-    "coverImage": "../resources/wl-images/7 Wonders.png",
+    "link": "https://a.co/d/02nYr8IX",
+    "coverImage": "../resources/wl-images/7wonders.jpg",
+    "coverOffset": [0, -0.4],
     "observation": ""
   },
   {
@@ -284,10 +298,11 @@
   },
   {
     "title": "Cosmic Encounter",
-    "tags": ["🎲"],
+    "tags": ["🎲", "🌎"],
     "price": 3,
-    "link": "https://galapagosjogos.com.br/cosmic-encounter",
-    "coverImage": "../resources/wl-images/Cosmic Encounter.png",
+    "link": "https://zatu.com/products/cosmic-encounter",
+    "coverImage": "../resources/wl-images/cosmic.jpg",
+    "coverOffset": [0.0, -0.6],
     "observation": ""
   },
   {
@@ -305,6 +320,88 @@
     "link": "https://a.co/d/06l9ZNqg",
     "coverImage": "../resources/wl-images/patchwork.jpg",
     "observation": ""
+  },
+  {
+    "title": "Betrayal at House on the Hill",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://a.co/d/0ip0RR8E",
+    "coverImage": "../resources/wl-images/betrayal.jpg",
+    "coverOffset": [0, -0.5],
+    "observation": ""
+  },
+  {
+    "title": "Radlands",
+    "tags": ["🎲"],
+    "price": 2,
+    "link": "https://a.co/d/09kOmuDR",
+    "coverImage": "../resources/wl-images/radlands.webp",
+    "observation": ""
+  },
+  {
+    "title": "Cascadia",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://a.co/d/0aOFVfZc",
+    "coverImage": "../resources/wl-images/cascadia.webp",
+    "observation": ""
+  },
+  {
+    "title": "Sky Team",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://a.co/d/0aamqDiz",
+    "coverImage": "../resources/wl-images/skyteam.jpg",
+    "coverOffset": [0.0, -0.5],
+    "observation": ""
+  },{
+    "title": "The Crew - Mission Deep Sea",
+    "tags": ["🎲", "⭐"],
+    "price": 1,
+    "link": "https://a.co/d/04Ct8BrQ",
+    "coverImage": "../resources/wl-images/thecrew.webp",
+    "observation": ""
+  },
+  {
+    "title": "Pandemic",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://a.co/d/0cGsxfVU",
+    "coverImage": "../resources/wl-images/pandemic.jpeg",
+    "coverOffset": [0.0, 0.1],
+    "observation": ""
+  },
+  {
+    "title": "Heat: Pedal to the Metal",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://a.co/d/0h2loo2H",
+    "coverImage": "../resources/wl-images/heat.webp",
+    "observation": ""
+  },
+  {
+    "title": "King of Tokyo",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://a.co/d/08mqFeU1",
+    "coverImage": "../resources/wl-images/kingoftokyo.webp",
+    "observation": ""
+  },
+  {
+    "title": "Quacks",
+    "tags": ["🎲"],
+    "price": 3,
+    "link": "https://a.co/d/0imANgky",
+    "coverImage": "../resources/wl-images/quacks.webp",
+    "observation": ""
+  },
+  {
+    "title": "Quest",
+    "tags": ["🎲"],
+    "price": 2,
+    "link": "https://a.co/d/09jSZhb0",
+    "coverImage": "../resources/wl-images/quest.jpg",
+    "observation": "Don Eskridge"
   },
   {
     "title": "Raspberry Pi Zero",
