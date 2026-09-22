@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Wishlist</title>
 
-        <link rel="stylesheet" href="../css/mess.css?v=10" />
+        <link rel="stylesheet" href="../css/mess.css?v=11" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +14,7 @@
             rel="stylesheet"
         />
     </head>
-    <body>
+    <body class="wl-page">
         <main class="wl-main">
             <div class="wl-filters-bar">
                 <div class="wl-filters-group wl-filters-exclusive">
@@ -35,19 +35,19 @@
                 <div class="wl-filter-divider"></div>
 
                 <div class="wl-filters-group wl-filters-additive">
-                    <button class="wl-chip" data-type="additive" data-tag="⭐">
+                    <button class="wl-chip" data-type="additive" data-tag="⭐" aria-label="Estrela" title="Estrela">
                         ⭐
                     </button>
-                    <button class="wl-chip" data-type="additive" data-tag="-🌎" aria-label="Items from Brazil">
+                    <button class="wl-chip" data-type="additive" data-tag="-🌎" aria-label="Vendidos nacionalmente" title="Vendidos nacionalmente">
                         🇧🇷
                     </button>
                 </div>
 
-                <button id="wl-price-button" class="wl-chip wl-chip-circle active" aria-label="Show lowest prices first">
+                <button id="wl-price-button" class="wl-chip wl-chip-circle active" aria-label="Ordenar por preço" title="Ordenar por preço">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                 </button>
 
-                <button id="wl-shuffle-btn" class="wl-chip wl-chip-circle" aria-label="Shuffle items">
+                <button id="wl-shuffle-btn" class="wl-chip wl-chip-circle" aria-label="Ordenar aleatoriamente" title="Ordenar aleatoriamente">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shuffle"><path d="m18 14 4 4-4 4"/><path d="m18 2 4 4-4 4"/><path d="M2 18h1.973a4 4 0 0 0 3.3-1.7l5.454-8.6a4 4 0 0 1 3.3-1.7H22"/><path d="M2 6h1.972a4 4 0 0 1 3.6 2.2"/><path d="M22 18h-6.041a4 4 0 0 1-3.3-1.8l-.359-.45"/></svg>
                 </button>
             </div>
@@ -62,6 +62,16 @@
             <div class="wl-modal-content">
                 <button id="wl-modal-close" class="wl-modal-close" aria-label="Close modal">&times;</button>
                 <img id="wl-modal-img" src="" alt="Full view" />
+                <div class="wl-modal-info">
+                    <div class="wl-modal-heading">
+                        <span id="wl-modal-category"></span>
+                        <span id="wl-modal-title"></span>
+                        <span class="wl-modal-spacer"></span>
+                        <a id="wl-modal-link" class="wl-modal-link" href="" target="_blank" rel="noopener noreferrer" aria-label="Abrir link" hidden>
+                            Abrir link
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -78,7 +88,9 @@
                 '⭐': 'Estrela',
                 '⚙️': 'Tecnologia',
                 '🎲': 'Jogo de Tabuleiro',
-                '🌟': 'Especial'
+                '🌟': 'Especial',
+                '🇧🇷': 'Vendidos nacionalmente',
+                '🌎': 'Vendidos internacionalmente'
             };
 
             const customFilters = {
@@ -146,6 +158,8 @@
                     const isStarActive = state.additiveTags.has('⭐') || isGlowing;
                     starChip.dataset.tag = isGlowing ? '🌟' : '⭐';
                     starChip.textContent = isGlowing ? '🌟' : '⭐';
+                    starChip.title = emojiToText[starChip.dataset.tag];
+                    starChip.setAttribute('aria-label', emojiToText[starChip.dataset.tag]);
                     starChip.classList.toggle('active', isStarActive);
                 }
 
@@ -255,11 +269,15 @@
                             if (chip.dataset.tag === '🌟') {
                                 chip.dataset.tag = '⭐';
                                 chip.textContent = '⭐';
+                                chip.title = emojiToText['⭐'];
+                                chip.setAttribute('aria-label', emojiToText['⭐']);
                                 chip.classList.remove('active');
                                 state.additiveTags.delete('🌟');
                             } else if (now - lastStarClickTime < 450) {
                                 chip.dataset.tag = '🌟';
                                 chip.textContent = '🌟';
+                                chip.title = emojiToText['🌟'];
+                                chip.setAttribute('aria-label', emojiToText['🌟']);
                                 chip.classList.add('active');
                                 state.additiveTags.delete('⭐');
                                 state.additiveTags.add('🌟');
@@ -400,6 +418,11 @@
             function createCardElement(item) {
                 const card = document.createElement('div');
                 card.className = 'wl-card';
+                if (item.coverImage && item.coverImage.trim() !== '') {
+                    card.addEventListener('click', () => {
+                        openImageModal(item.coverImage, item);
+                    });
+                }
                 if (item.tags?.includes('⭐') || item.tags?.includes('🌟')) {
                     card.classList.add('wl-card-featured');
                 }
@@ -441,10 +464,6 @@
                     }
                     
                     coverWrapper.appendChild(img);
-                    coverWrapper.addEventListener('click', () => {
-                        openImageModal(item.coverImage, item.title);
-                    });
-
                     card.appendChild(coverWrapper);
                 }
 
@@ -493,6 +512,9 @@
 
                 const footer = document.createElement('div');
                 footer.className = 'wl-card-footer';
+                footer.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
 
                 const footerLeft = document.createElement('div');
                 footerLeft.className = 'wl-card-footer-left';
@@ -501,7 +523,16 @@
                 if (extraTags.length > 0) {
                     const extraSpan = document.createElement('span');
                     extraSpan.className = 'wl-card-extra-tags';
-                    extraSpan.textContent = extraTags.join(' ');
+                    extraTags.forEach((tag, index) => {
+                        const tagElem = document.createElement('span');
+                        tagElem.textContent = tag;
+                        tagElem.title = emojiToText[tag] || tag;
+                        tagElem.setAttribute('aria-label', tagElem.title);
+                        extraSpan.appendChild(tagElem);
+                        if (index < extraTags.length - 1) {
+                            extraSpan.appendChild(document.createTextNode(' '));
+                        }
+                    });
                     footerLeft.appendChild(extraSpan);
 
                     const divider = document.createElement('div');
@@ -535,7 +566,7 @@
                     linkBtn.target = '_blank';
                     linkBtn.rel = 'noopener noreferrer';
                     linkBtn.ariaLabel = 'Open item link';
-                    linkBtn.textContent = '↗';
+                    linkBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right preview-icon"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>';
 
                     linkBtn.addEventListener('click', (e) => {
                         e.stopPropagation();
@@ -561,11 +592,18 @@
                 });
             }
 
-            function openImageModal(src, title) {
+            function openImageModal(src, item) {
                 const modal = document.getElementById('wl-image-modal');
                 const img = document.getElementById('wl-modal-img');
+                const category = item.tags?.[0] || '';
+                const link = document.getElementById('wl-modal-link');
+
                 img.src = src;
-                img.alt = title || 'Wishlist image';
+                img.alt = item.title || 'Wishlist image';
+                document.getElementById('wl-modal-category').textContent = category;
+                document.getElementById('wl-modal-title').textContent = item.title || 'Untitled';
+                link.hidden = !(item.link && item.link.trim() !== '');
+                link.href = item.link || '';
                 modal.classList.add('open');
                 modal.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden';

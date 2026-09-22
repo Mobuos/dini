@@ -120,6 +120,15 @@ a:hover {
     text-decoration-color: var(--link);
 }
 
+.wl-page a::before,
+.wl-page a:hover::before {
+    display: none;
+}
+
+.wl-page a:hover {
+    text-decoration-style: solid;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -412,24 +421,42 @@ button.wl-chip.active:hover {
     inset: 0;
     z-index: 2;
     pointer-events: none;
-    background: linear-gradient(
-        110deg,
-        transparent 35%,
-        rgba(255, 254, 234, 0.08) 46%,
-        rgba(255, 254, 234, 0.2) 50%,
-        rgba(255, 254, 234, 0.08) 54%,
-        transparent 65%
+    padding-top: 0.5px;
+    padding-right: 0.5px;
+    padding-left: 0.5px;
+    padding-bottom: 1.5px;
+    border-radius: inherit;
+    background: conic-gradient(
+        from var(--wl-shine-angle),
+        transparent 0deg 0deg,
+        rgba(255, 221, 92, 0.25) 40deg,
+        rgba(213, 187, 17, 0.95) 100deg,
+        /* rgba(255, 221, 92, 0.25) 180deg, */
+        transparent 110deg 360deg
     );
-    transform: translateX(-120%);
-    animation: wl-card-shine 5s ease-in-out infinite;
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    animation: wl-card-shine 5.5s linear infinite;
+}
+
+@property --wl-shine-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
 }
 
 @keyframes wl-card-shine {
-    0%, 65% {
-        transform: translateX(-120%);
+    from {
+        --wl-shine-angle: 0deg;
     }
-    100% {
-        transform: translateX(120%);
+    to {
+        --wl-shine-angle: 360deg;
     }
 }
 
@@ -702,8 +729,8 @@ a.wl-link-btn:focus-visible {
     max-width: 90vw;
     max-height: 90vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
     z-index: 10000;
 }
 
@@ -714,6 +741,39 @@ a.wl-link-btn:focus-visible {
     border-radius: 4px;
     border: 1.5px solid rgba(255, 254, 234, 0.2);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+.wl-modal-info {
+    color: var(--wl-white);
+    padding-block-start: 12px;
+}
+
+.wl-modal-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+#wl-modal-title {
+    font-size: 1.15em;
+}
+
+.wl-modal-spacer {
+    flex: 1;
+}
+
+.wl-modal-link {
+    color: var(--wl-white);
+    font-size: 0.9em;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.wl-modal-link:hover,
+.wl-modal-link:focus-visible {
+    color: var(--wl-accent);
 }
 
 .wl-modal-close,
