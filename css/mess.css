@@ -359,6 +359,7 @@ button.wl-chip-circle {
     width: 15px;
     height: 15px;
     display: block;
+    flex-shrink: 0;
 }
 
 .wl-chip:hover,
@@ -403,6 +404,40 @@ button.wl-chip.active:hover {
     border: 1.5px solid rgba(255, 254, 234, 0.18);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     color: var(--wl-white);
+}
+
+.wl-card-featured::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+        110deg,
+        transparent 35%,
+        rgba(255, 254, 234, 0.08) 46%,
+        rgba(255, 254, 234, 0.2) 50%,
+        rgba(255, 254, 234, 0.08) 54%,
+        transparent 65%
+    );
+    transform: translateX(-120%);
+    animation: wl-card-shine 5s ease-in-out infinite;
+}
+
+@keyframes wl-card-shine {
+    0%, 65% {
+        transform: translateX(-120%);
+    }
+    100% {
+        transform: translateX(120%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wl-card-featured::after {
+        animation: none;
+        opacity: 0;
+    }
 }
 
 .wl-card-bleed {
