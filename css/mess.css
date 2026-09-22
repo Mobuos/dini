@@ -421,18 +421,15 @@ button.wl-chip.active:hover {
     inset: 0;
     z-index: 2;
     pointer-events: none;
-    padding-top: 0.5px;
-    padding-right: 0.5px;
-    padding-left: 0.5px;
-    padding-bottom: 1.5px;
+    padding: 1.5px;
     border-radius: inherit;
     background: conic-gradient(
         from var(--wl-shine-angle),
-        transparent 0deg 0deg,
-        rgba(255, 221, 92, 0.25) 40deg,
-        rgba(213, 187, 17, 0.95) 100deg,
-        /* rgba(255, 221, 92, 0.25) 180deg, */
-        transparent 110deg 360deg
+        transparent 0deg 35deg,
+        rgba(255, 221, 92, 0.25) 55deg,
+        rgba(213, 187, 17, 0.95) 90deg,
+        rgba(255, 221, 92, 0.25) 125deg,
+        transparent 145deg 360deg
     );
     -webkit-mask:
         linear-gradient(#000 0 0) content-box,
