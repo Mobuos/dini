@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Wishlist</title>
 
-        <link rel="stylesheet" href="../css/mess.css?v=12" />
+        <link rel="stylesheet" href="../css/mess.css?v=13" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -418,11 +418,6 @@
             function createCardElement(item) {
                 const card = document.createElement('div');
                 card.className = 'wl-card';
-                if (item.coverImage && item.coverImage.trim() !== '') {
-                    card.addEventListener('click', () => {
-                        openImageModal(item.coverImage, item);
-                    });
-                }
                 if (item.tags?.includes('⭐') || item.tags?.includes('🌟')) {
                     card.classList.add('wl-card-featured');
                 }
@@ -469,6 +464,13 @@
 
                 const body = document.createElement('div');
                 body.className = 'wl-card-body';
+                const itemLink = typeof item.link === 'string' ? item.link.trim() : '';
+                if (itemLink) {
+                    body.addEventListener('click', () => {
+                        window.open(itemLink, '_blank', 'noopener,noreferrer');
+                    });
+                    body.style.cursor = 'pointer';
+                }
 
                 const firstTag = (item.tags && item.tags.length > 0) ? item.tags[0] : '';
                 if (firstTag) {

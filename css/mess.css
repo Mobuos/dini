@@ -395,6 +395,33 @@ button.wl-chip.active:hover {
     box-shadow: none;
 }
 
+@media (max-width: 700px) {
+    .wl-filters-exclusive {
+        flex: 1 1 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .wl-filters-exclusive .wl-chip {
+        width: 100%;
+        padding-inline: 10px;
+    }
+
+    .wl-filter-divider {
+        display: none;
+    }
+
+    .wl-filters-additive {
+        gap: 8px;
+        margin-inline-end: auto;
+    }
+
+    #wl-price-button {
+        margin-inline-start: 0;
+    }
+}
+
 /* Grid Layout */
 .wl-grid {
     display: grid;
@@ -818,31 +845,6 @@ button.wl-modal-close:hover {
         margin-block-start: -28px;
         padding-inline: 16px;
         padding-block: 14px;
-    }
-
-    .wl-filters-exclusive {
-        flex: 1 1 100%;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-    }
-
-    .wl-filters-exclusive .wl-chip {
-        width: 100%;
-        padding-inline: 10px;
-    }
-
-    .wl-filter-divider {
-        display: none;
-    }
-
-    .wl-filters-additive {
-        gap: 8px;
-    }
-
-    .wl-chip-circle,
-    button.wl-chip-circle {
-        margin-inline-start: auto;
     }
 
     .wl-grid {
