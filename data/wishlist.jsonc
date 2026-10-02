@@ -210,15 +210,6 @@
     "coverOffset": [0.0, -0.5],
     "observation": ""
   },
-  {
-    "title": "Wingspan",
-    "tags": ["🎲", "⭐"],
-    "price": 3,
-    "link": "https://a.co/d/098VBeIR",
-    "coverImage": "../resources/wl-images/Wingspan.png",
-    "coverOffset": [0.0, -0.5],
-    "observation": ""
-  },
   // Não achei
   {
     "title": "Terra Mystica",
