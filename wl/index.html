@@ -5,14 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Wishlist</title>
 
-        <link rel="stylesheet" href="../css/mess.css?v=13" />
-
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Hanken+Grotesk:wght@500;600;900&display=swap"
-            rel="stylesheet"
-        />
+        <link rel="preload" href="../resources/wl-images/O Problema dos Três Corpos The Three-Body Problem.webp" as="image" fetchpriority="high" />
+        <link rel="preload" href="../data/wishlist.jsonc" as="fetch" crossorigin />
+        <link rel="preload" href="../css/mess.css?v=14" as="style" />
+        <link rel="stylesheet" href="../css/mess.css?v=14" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="../css/mess.css?v=14" /></noscript>
     </head>
     <body class="wl-page">
         <main class="wl-main">
@@ -422,18 +419,18 @@
                     card.classList.add('wl-card-featured');
                 }
 
+                let coverBleed = null;
                 if (item.coverImage && item.coverImage.trim() !== '') {
-                    const bleed = document.createElement('div');
-                    bleed.className = 'wl-card-bleed';
-                    bleed.style.backgroundImage = `url('${item.coverImage}')`;
+                    coverBleed = document.createElement('div');
+                    coverBleed.className = 'wl-card-bleed';
                     if (item.coverOffset && Array.isArray(item.coverOffset) && item.coverOffset.length === 2) {
                         const offsetX = parseFloat(item.coverOffset[0]) || 0;
                         const offsetY = parseFloat(item.coverOffset[1]) || 0;
                         const posX = 50 + (offsetX * 100);
                         const posY = 50 + (offsetY * 100);
-                        bleed.style.backgroundPosition = `${posX}% ${posY}%`;
+                        coverBleed.style.backgroundPosition = `${posX}% ${posY}%`;
                     }
-                    card.appendChild(bleed);
+                    card.appendChild(coverBleed);
                 }
 
                 if (item.coverImage && item.coverImage.trim() !== '') {
@@ -442,12 +439,28 @@
                     
                     const img = document.createElement('img');
                     img.className = 'wl-card-cover';
-                    img.src = item.coverImage;
+                    const optimizedCover = getOptimizedCover(item.coverImage);
+                    img.src = optimizedCover;
+                    img.loading = 'lazy';
+                    if (item === wishlistData[0]) {
+                        img.loading = 'eager';
+                        img.fetchPriority = 'high';
+                    }
                     img.alt = item.title || 'Wishlist item';
+                    let usingOriginalCover = false;
+                    img.onload = () => {
+                        if (coverBleed) {
+                            coverBleed.style.backgroundImage = `url('${img.currentSrc || img.src}')`;
+                        }
+                    };
                     img.onerror = () => {
+                        if (!usingOriginalCover && optimizedCover !== item.coverImage) {
+                            usingOriginalCover = true;
+                            img.src = item.coverImage;
+                            return;
+                        }
                         coverWrapper.remove();
-                        const bleed = card.querySelector('.wl-card-bleed');
-                        if (bleed) bleed.remove();
+                        if (coverBleed) coverBleed.remove();
                     };
 
                     if (item.coverOffset && Array.isArray(item.coverOffset) && item.coverOffset.length === 2) {
@@ -580,6 +593,10 @@
                 card.appendChild(footer);
 
                 return card;
+            }
+
+            function getOptimizedCover(imagePath) {
+                return imagePath.replace(/\.(png|jpe?g)$/i, '.webp');
             }
 
             function setupModal() {
