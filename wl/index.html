@@ -7,9 +7,7 @@
 
         <link rel="preload" href="../resources/wl-images/O Problema dos Três Corpos The Three-Body Problem.webp" as="image" fetchpriority="high" />
         <link rel="preload" href="../data/wishlist.jsonc" as="fetch" crossorigin />
-        <link rel="preload" href="../css/mess.css?v=14" as="style" />
-        <link rel="stylesheet" href="../css/mess.css?v=14" media="print" onload="this.media='all'" />
-        <noscript><link rel="stylesheet" href="../css/mess.css?v=14" /></noscript>
+        <link rel="stylesheet" href="../css/mess.css?v=15" />
     </head>
     <body class="wl-page">
         <main class="wl-main">
@@ -54,11 +52,11 @@
             <div id="wishlist-grid" class="wl-grid"></div>
         </main>
 
-        <div id="wl-image-modal" class="wl-modal" aria-hidden="true">
+        <div id="wl-image-modal" class="wl-modal" role="dialog" aria-modal="true" aria-label="Wishlist image preview" aria-hidden="true" hidden>
             <div class="wl-modal-backdrop" id="wl-modal-backdrop"></div>
             <div class="wl-modal-content">
                 <button id="wl-modal-close" class="wl-modal-close" aria-label="Close modal">&times;</button>
-                <img id="wl-modal-img" src="" alt="Full view" />
+                <img id="wl-modal-img" alt="Full view" />
                 <div class="wl-modal-info">
                     <div class="wl-modal-heading">
                         <span id="wl-modal-category"></span>
@@ -439,6 +437,8 @@
                     
                     const img = document.createElement('img');
                     img.className = 'wl-card-cover';
+                    img.width = 640;
+                    img.height = 360;
                     const optimizedCover = getOptimizedCover(item.coverImage);
                     img.src = optimizedCover;
                     img.loading = 'lazy';
@@ -623,15 +623,19 @@
                 document.getElementById('wl-modal-title').textContent = item.title || 'Untitled';
                 link.hidden = !(item.link && item.link.trim() !== '');
                 link.href = item.link || '';
+                modal.hidden = false;
                 modal.classList.add('open');
                 modal.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden';
+                document.getElementById('wl-modal-close').focus();
             }
 
             function closeImageModal() {
                 const modal = document.getElementById('wl-image-modal');
+                if (modal.hidden) return;
                 modal.classList.remove('open');
                 modal.setAttribute('aria-hidden', 'true');
+                modal.hidden = true;
                 document.body.style.overflow = '';
             }
 

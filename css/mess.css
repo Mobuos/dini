@@ -736,6 +736,10 @@ a.wl-link-btn:focus-visible {
     padding: 20px;
 }
 
+.wl-modal[hidden] {
+    display: none;
+}
+
 .wl-modal.open {
     opacity: 1;
     pointer-events: auto;
