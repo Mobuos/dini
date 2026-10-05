@@ -9,15 +9,6 @@
     "observation": "Liu Cixin"
   },
   {
-    "title": "Os Robôs da Alvorada",
-    "tags": ["📚"],
-    "price": 1,
-    "link": "https://a.co/d/0icb5mR1",
-    "coverImage": "../resources/wl-images/Os Robôs da Alvorada.png",
-    "coverOffset": [0.0, 0.16],
-    "observation": "Dan Simmons"
-  },
-  {
     "title": "Devoradores de Estrelas (Project Hail Mary)",
     "tags": ["📚"],
     "price": 1,
@@ -33,15 +24,6 @@
     "coverImage": "../resources/wl-images/Hyperion.png",
     "coverOffset": [0.0, 0.24],
     "observation": "Dan Simmons"
-  },
-  {
-    "title": "Robôs e Império",
-    "tags": ["📚"],
-    "price": 1,
-    "link": "https://a.co/d/0eDoGVpt",
-    "coverImage": "../resources/wl-images/Robôs e Império.png",
-    "coverOffset": [0.0, -0.12],
-    "observation": "Isaac Asimov"
   },
   {
     "title": "Seveneves",
