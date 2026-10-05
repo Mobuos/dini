@@ -211,14 +211,14 @@
     "observation": ""
   },
   // Não achei
-  {
-    "title": "Terra Mystica",
-    "tags": ["🎲"],
-    "price": 3,
-    // "link": "TODO",
-    "coverImage": "../resources/wl-images/Terra Mystica.png",
-    "observation": ""
-  },
+  // {
+  //   "title": "Terra Mystica",
+  //   "tags": ["🎲"],
+  //   "price": 3,
+  //   // "link": "TODO",
+  //   "coverImage": "../resources/wl-images/Terra Mystica.png",
+  //   "observation": ""
+  // },
   {
     "title": "ROOT",
     "tags": ["🎲", "⭐"],
@@ -227,14 +227,14 @@
     "coverImage": "../resources/wl-images/root.jpg",
     "observation": ""
   },
-  {
-    "title": "Scythe",
-    "tags": ["🎲"],
-    "price": 3,
-    "link": "https://galapagosjogos.com.br/scythe",
-    "coverImage": "../resources/wl-images/Scythe.png",
-    "observation": ""
-  },
+  // {
+  //   "title": "Scythe",
+  //   "tags": ["🎲"],
+  //   "price": 3,
+  //   "link": "https://galapagosjogos.com.br/scythe",
+  //   "coverImage": "../resources/wl-images/Scythe.png",
+  //   "observation": ""
+  // },
     {
     "title": "The Shipwreck Arcana",
     "tags": ["🎲", "⭐", "🌎"],
@@ -243,15 +243,15 @@
     "coverImage": "../resources/wl-images/shipwreck.webp",
     "observation": ""
   },
-  {
-    "title": "Terraforming Mars",
-    "tags": ["🎲"],
-    "price": 3,
-    "link": "https://meeplebr.com/product/terraforming-mars/",
-    "coverImage": "../resources/wl-images/Terraforming Mars.png",
-    "coverOffset": [0, -0.4],
-    "observation": ""
-  },
+  // {
+  //   "title": "Terraforming Mars",
+  //   "tags": ["🎲"],
+  //   "price": 3,
+  //   "link": "https://meeplebr.com/product/terraforming-mars/",
+  //   "coverImage": "../resources/wl-images/Terraforming Mars.png",
+  //   "coverOffset": [0, -0.4],
+  //   "observation": ""
+  // },
   {
     "title": "Duna: Imperium",
     "tags": ["🎲", "⭐"],
@@ -261,15 +261,15 @@
     "coverOffset": [0, -0.4],
     "observation": ""
   },
-  {
-    "title": "Clank!",
-    "tags": ["🎲"],
-    "price": 3,
-    "link": "https://a.co/d/09tPl0gC",
-    "coverImage": "../resources/wl-images/clank.webp",
-    "coverOffset": [0, -0.45],
-    "observation": ""
-  },
+  // {
+  //   "title": "Clank!",
+  //   "tags": ["🎲"],
+  //   "price": 3,
+  //   "link": "https://a.co/d/09tPl0gC",
+  //   "coverImage": "../resources/wl-images/clank.webp",
+  //   "coverOffset": [0, -0.45],
+  //   "observation": ""
+  // },
   {
     "title": "7 Wonders",
     "tags": ["🎲"],
@@ -279,14 +279,14 @@
     "coverOffset": [0, -0.4],
     "observation": ""
   },
-  {
-    "title": "Projeto Gaia",
-    "tags": ["🎲"],
-    "price": 3,
-    "link": "https://www.devir.com.br/projeto-gaia/",
-    "coverImage": "../resources/wl-images/Projeto Gaia.png",
-    "observation": ""
-  },
+  // {
+  //   "title": "Projeto Gaia",
+  //   "tags": ["🎲"],
+  //   "price": 3,
+  //   "link": "https://www.devir.com.br/projeto-gaia/",
+  //   "coverImage": "../resources/wl-images/Projeto Gaia.png",
+  //   "observation": ""
+  // },
   {
     "title": "Cosmic Encounter",
     "tags": ["🎲", "🌎"],
